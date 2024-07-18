@@ -10,8 +10,7 @@
 <h1>Bem vindo ao curso JSP</h1>
 
 <%--Formulário para enviar os dados--%>
-<%--Direcionando para a página receber-nome.jsp--%>
-<form action="receber-nome.jsp">
+<form action="ServletLogin" method="post">
 
 <%--Campos de entrada de dados que são HTML --%>
 <input name= "nome">
