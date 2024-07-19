@@ -12,9 +12,16 @@
 <%--Formulário para enviar os dados--%>
 <form action="ServletLogin" method="post">
 
+<table>
+<tr>
+<td><input name="login" type="text"></td>
+</tr>
+
+</table>
+
 <%--Campos de entrada de dados que são HTML --%>
-<input name= "nome">
-<input name = "idade">
+<input name= "login" type="text">
+<input name = "senha" type="password">
 
 <%--Botão para enviar os dados para a página receber-nome.jsp  --%>
 <input type="submit" value="Enviar">

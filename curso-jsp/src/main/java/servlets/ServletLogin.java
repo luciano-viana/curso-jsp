@@ -7,7 +7,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.ModelLogin;
 
+//O chamado Controller são as servlets ou ServletLoginController
 //@WebServlet("/ServletLogin")/*Mapemaento de URL que vem da tela*/
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,8 +28,15 @@ public class ServletLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println(request.getParameter("nome"));
-		System.out.println(request.getParameter("idade"));
+		//Irá receber os parâmetros de login e senha da tela
+		String login = request.getParameter("login");
+		String senha = request.getParameter("senha");
+		
+		//Objetivo irá receber os dados do login e senha
+		ModelLogin modelLogin = new ModelLogin();
+		modelLogin.setLogin(login);
+		modelLogin.setSenha(senha);
+		
 	}
 
 }
