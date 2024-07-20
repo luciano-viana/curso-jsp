@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,15 +29,42 @@ public class ServletLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		//Irá receber os parâmetros de login e senha da tela
+		// Irá receber os parâmetros de login e senha da tela
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
-		
-		//Objetivo irá receber os dados do login e senha
-		ModelLogin modelLogin = new ModelLogin();
-		modelLogin.setLogin(login);
-		modelLogin.setSenha(senha);
-		
+		String url = request.getParameter("url");
+
+		// Validar se login e senha foram informados
+		if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
+
+			// Objetivo irá receber os dados do login e senha
+			ModelLogin modelLogin = new ModelLogin();
+			modelLogin.setLogin(login);
+			modelLogin.setSenha(senha);
+			
+			if(modelLogin.getLogin().equalsIgnoreCase("admin")&& modelLogin.getSenha().equalsIgnoreCase("admin")) {//Simulando um login
+				
+				request.getSession().setAttribute("usuario", modelLogin.getLogin());
+				
+				//Validação da url
+				if(url == null | url.equals("null")) {
+					url = "principal/principal.jsp";
+				}
+				
+				RequestDispatcher redirecionar = request.getRequestDispatcher(url);
+				redirecionar.forward(request, response);
+				
+			}else {
+				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("msg", "Informe o login e senha corretamente!");
+				redirecionar.forward(request, response);
+			}
+			
+		}else {
+			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");//direcionar para a tela principal
+			request.setAttribute("msg", "Informe o login e senha corretamente!");//informar mensagem para o usuário
+			redirecionar.forward(request, response);//dá o comando de redirecionamento e volta para tela mostrando a mensagem
+		}
 	}
 
 }
