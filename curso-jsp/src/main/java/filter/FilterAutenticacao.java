@@ -42,8 +42,8 @@ public class FilterAutenticacao implements Filter {
 		String urlParaAutenticar = req.getServletPath();// url que está sendo acessada
 
 		// Validar se está logado, se não redireciona para a tela de login
-		if (usuariologado == null || (usuariologado != null && usuariologado.isEmpty())
-				&& !urlParaAutenticar.contains("/principal/ServletLogin")) {// Não está logado
+		if (usuariologado == null && !urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin")) {// Não está logado
+			
 			RequestDispatcher redireciona = request.getRequestDispatcher("/index.jsp?url=" + urlParaAutenticar);
 			request.setAttribute("msg", "por favor realize o login!");
 			redireciona.forward(request, response);
