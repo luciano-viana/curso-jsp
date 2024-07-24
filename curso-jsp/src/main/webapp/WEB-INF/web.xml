@@ -25,6 +25,5 @@
     <filter-name>FilterAutenticacao</filter-name>
     <url-pattern>/FilterAutenticacao</url-pattern>
   </filter-mapping>
-  
    -->
 </web-app>
