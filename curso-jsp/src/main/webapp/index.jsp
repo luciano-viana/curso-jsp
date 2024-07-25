@@ -28,10 +28,12 @@ h2 {
 
 .msg {
 	position: absolute;
-	top:70%;
+	top:10%;
 	left:33%;
 	font-size: 15px;
-	color: red;
+	color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
 }
 
 </style>
@@ -46,7 +48,7 @@ h2 {
 	
 	<input type="hidden" value="<%= request.getParameter("url") %>" name="url" >
 	
-			<div class="col-md-6">
+			<div class="mb-3">
 				<label class="form-label">Login</label>
 				<%--Campos de entrada de dados que são HTML --%>
 				<input class="form-control" name="login" type="text" required="required">
@@ -59,7 +61,7 @@ h2 {
     			
 			</div>
 			
-			<div class="col-md-6">
+			<div class="mb-3">
 				<label class="form-label">Senha</label>
 				<input class="form-control" name="senha" type="password" required="required">
 				<div class="invalid-feedback">
