@@ -47,45 +47,38 @@
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="footer-email" class="form-control" required="">
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Username</label>
+                                                                <label class="float-label">ID:</label>
                                                             </div>
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="footer-email" class="form-control" required="">
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Email (exa@gmail.com)</label>
+                                                                <label class="float-label">Nome:</label>
+                                                            </div>
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="footer-email" class="form-control" required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">E-mail:</label>
                                                             </div>
                                                             <div class="form-group form-default">
                                                                 <input type="password" name="footer-email" class="form-control" required="">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Password</label>
                                                             </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" value="My value">
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Predefine value</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" disabled>
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Disabled</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" maxlength="6">
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Max length 6 char</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <textarea class="form-control" required=""></textarea>
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Text area Input</label>
-                                                            </div>
+                                                            
+                                                            <button class="btn btn-primary waves-effect waves-light">Primary Button</button>
+												            <button class="btn btn-success waves-effect waves-light">Success Button</button>
+												            <button class="btn btn-info waves-effect waves-light">Info Button</button>
+												            <button class="btn btn-warning waves-effect waves-light">Warning Button</button>
+												            <button class="btn btn-danger waves-effect waves-light">Danger Button</button>
+												            <button class="btn btn-inverse waves-effect waves-light">Inverse Button</button>
+												            <button class="btn btn-disabled disabled waves-effect waves-light">Disabled Button</button>
+                                                            
                                                         </form>
 
 													</div>
 												</div>
 											</div>
 										</div>
-
 
 
 									</div>
