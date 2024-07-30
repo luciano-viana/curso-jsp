@@ -10,11 +10,15 @@ import model.ModelLogin;
 
 import java.io.IOException;
 
+import dao.DAOUsuarioRepository;
+
 
 @WebServlet("/ServletUsuarioController")/*Mapemaento de URL que vem da tela*/
 public class ServletUsuarioController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	
+	private DAOUsuarioRepository daoUsuarioRepository = new DAOUsuarioRepository();
        
     public ServletUsuarioController() {
     	
@@ -40,6 +44,8 @@ public class ServletUsuarioController extends HttpServlet {
 		modelLogin.setEmail(email);
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
+		
+		daoUsuarioRepository.gravarUsuario(modelLogin);
 		
 		
 		request.setAttribute("modolLogin", modelLogin);
