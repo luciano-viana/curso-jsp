@@ -12,7 +12,6 @@ import java.io.IOException;
 
 import dao.DAOUsuarioRepository;
 
-
 @WebServlet("/ServletUsuarioController")/*Mapemaento de URL que vem da tela*/
 public class ServletUsuarioController extends HttpServlet {
 	
@@ -27,7 +26,6 @@ public class ServletUsuarioController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 	
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Pegar parâmetros
@@ -46,7 +44,6 @@ public class ServletUsuarioController extends HttpServlet {
 		modelLogin.setSenha(senha);
 		
 		daoUsuarioRepository.gravarUsuario(modelLogin);
-		
 		
 		request.setAttribute("modolLogin", modelLogin);
 		
