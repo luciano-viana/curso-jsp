@@ -77,13 +77,12 @@
                                                             <button class="btn btn-primary waves-effect waves-light">Novo</button>
 												            <button class="btn btn-success waves-effect waves-light">Salvar</button>
 												            <button class="btn btn-info waves-effect waves-light">Excluir</button>
-                                                            
                                                         </form>
-
 													</div>
-												</div>
-											</div>
-										</div>
+													</div>
+													</div>
+													</div>
+													<span>${msg}</span>
 
 
 									</div>

@@ -28,6 +28,8 @@ public class ServletUsuarioController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try {
+		
 		//Pegar parâmetros
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
@@ -45,10 +47,19 @@ public class ServletUsuarioController extends HttpServlet {
 		
 		daoUsuarioRepository.gravarUsuario(modelLogin);
 		
-		request.setAttribute("modolLogin", modelLogin);
 		
+		request.setAttribute("msg", "Operação realizada com sucesso!");
+		request.setAttribute("modolLogin", modelLogin);
 		//Redirecionar para não ter tela em branco
 		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");//direcionar para a tela erro
+			request.setAttribute("msg", e.getMessage());//informar mensagem para o usuário
+			redirecionar.forward(request, response);//dá o comando de redirecionamento e volta para tela mostrando a mensagem
+		}
 		
 	}
 

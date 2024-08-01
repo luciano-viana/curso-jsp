@@ -28,7 +28,18 @@ public class DAOUsuarioRepository {
 		preparedSql.setString(3, objeto.getNome());
 		preparedSql.setString(4, objeto.getEmail());
 		
+		preparedSql.execute();
 		connection.commit();
+	}
+	
+	public ModelLogin consultaUsuario(String login) throws Exception {
+		String sql = "select * from model_login where upper(login) = upper('?')";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, login);
+		return null;
+		
+		
+		
 	}
 
 }
