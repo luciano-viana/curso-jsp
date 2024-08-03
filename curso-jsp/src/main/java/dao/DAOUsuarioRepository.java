@@ -16,7 +16,7 @@ public class DAOUsuarioRepository {
 		connection = SingleConnectionBanco.getConnection();
 	}
 	
-	
+	//Método grava e retorna
 	public ModelLogin gravarUsuario(ModelLogin objeto) throws Exception {
 		
 		String sql = "INSERT INTO model_login(login, senha, nome, email) VALUES (?, ?, ?, ?);";
@@ -61,5 +61,33 @@ public class DAOUsuarioRepository {
 		
 		
 	}
-
+	
+	public boolean validarLogin(String login) throws Exception{
+		String sql = "select count(1) > 0 as existe from model_login where upper(login) = upper('"+login+"');";
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		ResultSet resultado =  statement.executeQuery();
+		
+		resultado.next();//Para ele entrar nos resultados do sql
+		return resultado.getBoolean("existe");
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
