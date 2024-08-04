@@ -59,7 +59,6 @@ public class ServletUsuarioController extends HttpServlet {
 			modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
 		}
 		
-		
 		request.setAttribute("msg", msg);
 		request.setAttribute("modolLogin", modelLogin);
 		//Redirecionar para não ter tela em branco

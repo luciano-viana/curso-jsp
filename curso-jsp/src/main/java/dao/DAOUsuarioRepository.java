@@ -76,7 +76,6 @@ public class DAOUsuarioRepository {
 		 
 		return modelLogin;
 		
-		
 	}
 	
 	public boolean validarLogin(String login) throws Exception{
