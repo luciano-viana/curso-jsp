@@ -22,10 +22,32 @@ public class ServletUsuarioController extends HttpServlet {
     public ServletUsuarioController() {
     	
     }
-
+    
+    //Deletar e consultar utilizar o Get
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		try {
+			String acao = request.getParameter("acao");
+			
+			if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletar")) {
+				
+				String idUser = request.getParameter("id");
+				
+				daoUsuarioRepository.deletarUser(idUser);
+				
+				request.setAttribute("msg", "Ecluido com sucesso!");
+			}
+			
+			request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+			
+		}catch (Exception e) {
+			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");//direcionar para a tela erro
+			request.setAttribute("msg", e.getMessage());//informar mensagem para o usuário
+			redirecionar.forward(request, response);//dá o comando de redirecionamento e volta para tela mostrando a mensagem
+		}
 	}
 	
+	//Atualizar e Gravar utiliza Post
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
