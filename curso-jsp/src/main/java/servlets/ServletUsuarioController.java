@@ -44,7 +44,7 @@ public class ServletUsuarioController extends HttpServlet {
 					
 					daoUsuarioRepository.deletarUser(idUser);//Excluiu/Deletou
 					
-					response.getWriter().write("Ecluido com sucesso!");//Resposta
+					response.getWriter().write("Ecluído com sucesso!");//Resposta
 					
 			}else {
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);

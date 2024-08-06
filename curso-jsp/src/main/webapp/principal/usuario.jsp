@@ -108,7 +108,6 @@
 	
 	
 	<!-- Delete com Ajax -->
-	
 	function criarDeleteComAjax() {
 
 		if(confirm('Deseja realmente excluir os dados?')){
@@ -140,6 +139,7 @@
 	function criarDelete(){
 
 		if(confirm('Deseja realmente excluir os dados?')){
+
 			document.getElementById("formUser").method = 'get';
 			document.getElementById("acao").value = 'deletar';
 			document.getElementById("formUser").submit();
@@ -149,7 +149,7 @@
 	
 	
 	<!-- Função para limpar o formulário -->
-	function limparForme() {
+	function limparForm() {
 		var elementos = document.getElementById("formUser").elements; /*Retorna os elementos HTML dentro do form*/
 		
 		for(p = 0; p < elementos.length; p++){
