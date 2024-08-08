@@ -58,7 +58,7 @@ public class DAOUsuarioRepository {
 	public List<ModelLogin> consultaUsuarioList(String nome) throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login where upper(nome) like upper(?);";
+		String sql = "select * from model_login where upper(nome) like upper(?) order by id;";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, "%" + nome + "%");
 		
@@ -105,10 +105,37 @@ public class DAOUsuarioRepository {
 			 modelLogin.setSenha(resultado.getString("senha"));
 		 }
 		 
-		 
 		return modelLogin;
-		
 	}
+	
+	
+	//Método para consultar usuário por id
+		public ModelLogin consultaUsuarioID(String id) throws Exception {
+			
+			//Objeto
+			ModelLogin modelLogin = new ModelLogin();
+			
+			//Preparado o SQL para consulta no BD
+			String sql = "select * from model_login where id = ?";
+			
+			//Setado os parâmetros
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setLong(1, Long.parseLong(id));
+			
+			//Executado o sql
+			ResultSet resultado =  statement.executeQuery();
+			 
+			while (resultado.next()) {//Se tem resultado
+				 modelLogin.setId(resultado.getLong("id"));
+				 modelLogin.setNome(resultado.getString("nome"));
+				 modelLogin.setEmail(resultado.getString("email"));
+				 modelLogin.setLogin(resultado.getString("login"));
+				 modelLogin.setSenha(resultado.getString("senha"));
+			 }
+			 
+			return modelLogin;
+		}
+	
 	
 	public boolean validarLogin(String login) throws Exception{
 		String sql = "select count(1) > 0 as existe from model_login where upper(login) = upper('"+login+"');";
