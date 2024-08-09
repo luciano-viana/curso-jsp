@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DAOUsuarioRepository;
 
-@WebServlet("/ServletUsuarioController")/*Mapemaento de URL que vem da tela*/
+@WebServlet(urlPatterns = {"/ServletUsuarioController"})/*Mapemaento de URL que vem da tela*/
 public class ServletUsuarioController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -38,8 +38,12 @@ public class ServletUsuarioController extends HttpServlet {
 				
 				daoUsuarioRepository.deletarUser(idUser);
 				
+				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList();
+				request.setAttribute("modolLogins", modelLogins);
+				
 				request.setAttribute("msg", "Ecluido com sucesso!");
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+				
 				
 			}else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletarajax")) {
 					
@@ -55,7 +59,7 @@ public class ServletUsuarioController extends HttpServlet {
 				//System.out.println(nomeBusca);*/
 				
 				List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioList(nomeBusca);
-
+		
 				ObjectMapper mapper = new ObjectMapper();
 				String json = mapper.writeValueAsString(dadosJsonUser);
 				
@@ -66,19 +70,31 @@ public class ServletUsuarioController extends HttpServlet {
 				
 				ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(id);
 				
+				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList();
+				request.setAttribute("modolLogins", modelLogins);
+				
 				request.setAttribute("msg", "Usuário em edição");
 				request.setAttribute("modolLogin", modelLogin);
 				//Redirecionar para não ter tela em branco
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+				
 			}
-			
-			else {
+			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("listarUser")) {
+				
+				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList();
+				
+				request.setAttribute("msg", "Usuários carregados");
+				request.setAttribute("modolLogins", modelLogins);
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 			}
+			else {
+				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList();
+				request.setAttribute("modolLogins", modelLogins);
 				
-			
-		
-			
+				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+				
+			}
+				
 		}catch (Exception e) {
 			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");//direcionar para a tela erro
 			request.setAttribute("msg", e.getMessage());//informar mensagem para o usuário
@@ -119,6 +135,9 @@ public class ServletUsuarioController extends HttpServlet {
 			
 			modelLogin = daoUsuarioRepository.gravarUsuario(modelLogin);
 		}
+		
+		List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList();
+		request.setAttribute("modolLogins", modelLogins);
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("modolLogin", modelLogin);

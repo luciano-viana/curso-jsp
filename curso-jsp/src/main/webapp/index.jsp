@@ -53,7 +53,7 @@ h2 {
 				<%--Campos de entrada de dados que são HTML --%>
 				<input class="form-control" name="login" type="text" required="required">
 				<div class="invalid-feedback">
-     			 Obrigatório
+     			 Obrigatório!
     			</div>
     			<div class="valid-feedback">
      			 ok

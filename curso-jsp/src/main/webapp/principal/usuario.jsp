@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <!-- Declaração do JSP para trabalhar com o mesmo no projeto -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,7 @@
 												<div class="card">
 													
 													<div class="card-block">
-														<h4 class="sub-title">Cad. Usuário</h4>
+														<h4 class="sub-title">Cadastro de Usuário</h4>
 
 														<form class="form-material" action="<%= request.getContextPath()%>/ServletUsuarioController" method="post" id="formUser">
 														
@@ -78,7 +80,7 @@
                                                                 <label class="float-label">Senha:</label>
                                                             </div>
                                                             
-                                                            <button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForme();">Novo</button>
+                                                            <button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();">Novo</button>
 												            <button class="btn btn-success waves-effect waves-light">Salvar</button>
 												            <button type="button" class="btn btn-info waves-effect waves-light" onclick="criarDeleteComAjax();">Excluir</button>
 												            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalUsuario">Pesquisar</button>
@@ -89,6 +91,32 @@
 													</div>
 													</div>
 													<span id="msg">${msg}</span>
+													
+													<div style="height:300px; overflow: scroll; ">
+													
+													
+													<!-- tabela -->
+													<table class="table" id="tabelaresultadosview">
+											  	    <thead>
+											   	    <tr>
+											        <th scope="col">ID</th>
+											        <th scope="col">Nome</th>
+											        <th scope="col">Ver</th>
+											        </tr>
+											        </thead>
+											        <tbody>
+											         <c:forEach items='${modolLogins}' var='ml'> 
+											            <tr>
+											            <td><c:out value="${ml.id}"></c:out></td>
+											            <td><c:out value="${ml.nome}"></c:out></td>
+											            <td><a class="btn btn-success" href="<%= request.getContextPath()%>/ServletUsuarioController?acao=buscarEditar&id=${ml.id}">Ver</a></td>
+											            <td><a class="btn btn-info" href="<%= request.getContextPath()%>/ServletUsuarioController?acao=deletar&id=${ml.id}">Excluir</a></td>
+											            </tr>
+											         </c:forEach>
+											         
+											        </tbody>
+											        </table>
+											        </div>
 
 
 									</div>
@@ -127,7 +155,6 @@
 		<div style="height:300px; overflow: scroll; ">
 		<!-- tabela -->
 		<table class="table" id="tabelaresultados">
-		
   	    <thead>
    	    <tr>
         <th scope="col">ID</th>
@@ -140,6 +167,7 @@
         </tbody>
         </table>
         </div>
+        
         <span id="totalResultados"></span>
         
       </div>
@@ -152,6 +180,8 @@
 	
 	<script type="text/javascript">
 	
+	
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	function verEditar(id) {
 		
 		var urlAction = document.getElementById('formUser').action;
@@ -163,6 +193,7 @@
 		
 	}
 	
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	function buscarUsuario() {
 		var nomeBusca = document.getElementById('nomeBusca').value;
 		
@@ -200,7 +231,7 @@
 		
 	}
 	
-	
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	<!-- Delete com Ajax -->
 	function criarDeleteComAjax() {
 
@@ -246,7 +277,7 @@
 	function limparForm() {
 		var elementos = document.getElementById("formUser").elements; /*Retorna os elementos HTML dentro do form*/
 		
-		for(p = 0; p < elementos.length; p++){
+		for(p = 0; p < elementos.length; p ++){
 			elementos[p].value = '';
 		}
 	}

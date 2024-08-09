@@ -77,9 +77,36 @@ public class DAOUsuarioRepository {
 			retorno.add(modelLogin);
 		}
 		
+		return retorno;
+	}
+	
+	
+	//Método para buscar usuário
+	public List<ModelLogin> consultaUsuarioList() throws Exception{
+		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
+		
+		String sql = "select * from model_login order by id desc;";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		ResultSet resultado = statement.executeQuery();
+		
+		while(resultado.next()) {//Percorrer as linhas de resultado do SQL
+			
+			ModelLogin modelLogin = new ModelLogin();
+			
+			modelLogin.setEmail(resultado.getString("email"));
+			modelLogin.setId(resultado.getLong("id"));
+			modelLogin.setLogin(resultado.getString("login"));
+			modelLogin.setNome(resultado.getString("nome"));
+			//modelLogin.setSenha(resultado.getString("senha"));
+			
+			retorno.add(modelLogin);
+		}
+		
 		
 		return retorno;
 	}
+	
 	
 	
 	//Método para consultar usuário

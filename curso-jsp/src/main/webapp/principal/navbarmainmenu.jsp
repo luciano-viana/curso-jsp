@@ -51,10 +51,10 @@
 					class="pcoded-mcaret"></span>
 			</a>
 				<ul class="pcoded-submenu">
-					<li class=" "><a href="<%=request.getContextPath()%>/principal/usuario.jsp"
+					<li class=" "><a href="<%=request.getContextPath()%>/ServletUsuarioController?acao=listarUser"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
-							data-i18n="nav.basic-components.alert">Usuario</span> <span
+							data-i18n="nav.basic-components.alert">Usuário</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
 					<li class=" "><a href="breadcrumb.html"
