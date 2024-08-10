@@ -58,7 +58,7 @@ public class DAOUsuarioRepository {
 	public List<ModelLogin> consultaUsuarioList(String nome) throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login where upper(nome) like upper(?) order by id;";
+		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false order by id;";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, "%" + nome + "%");
 		
@@ -85,7 +85,7 @@ public class DAOUsuarioRepository {
 	public List<ModelLogin> consultaUsuarioList() throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login order by id desc;";
+		String sql = "select * from model_login where useradmin is false order by id desc;";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
 		ResultSet resultado = statement.executeQuery();
@@ -116,7 +116,7 @@ public class DAOUsuarioRepository {
 		ModelLogin modelLogin = new ModelLogin();
 		
 		//Preparado o SQL para consulta no BD
-		String sql = "select * from model_login where upper(login) = upper('"+login+"')";
+		String sql = "select * from model_login where upper(login) = upper('"+login+"') and useradmin is false";
 		
 		//Setado os parâmetros
 		PreparedStatement statement = connection.prepareStatement(sql);
@@ -143,7 +143,7 @@ public class DAOUsuarioRepository {
 			ModelLogin modelLogin = new ModelLogin();
 			
 			//Preparado o SQL para consulta no BD
-			String sql = "select * from model_login where id = ?";
+			String sql = "select * from model_login where id = ? and useradmin is false";
 			
 			//Setado os parâmetros
 			PreparedStatement statement = connection.prepareStatement(sql);
@@ -176,7 +176,7 @@ public class DAOUsuarioRepository {
 	}
 	
 	public void deletarUser(String idUser) throws Exception {
-		String sql = "DELETE FROM model_login WHERE id = ? "; //Montou SQL
+		String sql = "DELETE FROM model_login WHERE id = ? and useradmin is false "; //Montou SQL
 		PreparedStatement prepareSql = connection.prepareStatement(sql);//Preparou SQL
 		prepareSql.setLong(1, Long.parseLong(idUser)); //Setou o parâmetro
 		prepareSql.executeUpdate(); // Executou

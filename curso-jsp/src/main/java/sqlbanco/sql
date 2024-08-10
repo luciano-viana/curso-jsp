@@ -44,12 +44,6 @@ ALTER TABLE public.model_login
   OWNER TO postgres;
 
 --------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
 ALTER TABLE public.model_login
   OWNER TO postgres;
 
@@ -57,5 +51,9 @@ ALTER TABLE public.model_login
 INSERT INTO public.model_login(
             login, senha)
     VALUES ('admin', 'admin');
+    
+--------------------------------------------------------------------------------------------------------
+Alteração na tabelta para não conseguir alterar os dados do usuário adm
+alter table model_login add column useradmin boolean not null default false ;
 
   
