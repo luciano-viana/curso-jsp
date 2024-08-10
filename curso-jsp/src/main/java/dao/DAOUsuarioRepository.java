@@ -20,17 +20,18 @@ public class DAOUsuarioRepository {
 	}
 	
 	//Método grava e retorna
-	public ModelLogin gravarUsuario(ModelLogin objeto) throws Exception {
+	public ModelLogin gravarUsuario(ModelLogin objeto, Long userLogado) throws Exception {
 		
 		if(objeto.isNovo()) {//Grava um novo usuário
 		
-		String sql = "INSERT INTO model_login(login, senha, nome, email) VALUES (?, ?, ?, ?);";
+		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id) VALUES (?, ?, ?, ?,?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
 		
 		preparedSql.setString(1, objeto.getLogin());
 		preparedSql.setString(2, objeto.getSenha());
 		preparedSql.setString(3, objeto.getNome());
 		preparedSql.setString(4, objeto.getEmail());
+		preparedSql.setLong(5, userLogado);
 		
 		preparedSql.execute();
 		connection.commit();
@@ -50,17 +51,18 @@ public class DAOUsuarioRepository {
 			connection.commit();
 		}
 		
-		return this.consultaUsuario(objeto.getLogin());
+		return this.consultaUsuario(objeto.getLogin(), userLogado);
 	}
 	
 	
 	//Método para buscar usuário
-	public List<ModelLogin> consultaUsuarioList(String nome) throws Exception{
+	public List<ModelLogin> consultaUsuarioList(String nome, Long userLogado) throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false order by id;";
+		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? order by id;";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, "%" + nome + "%");
+		statement.setLong(2, userLogado);
 		
 		ResultSet resultado = statement.executeQuery();
 		
@@ -82,10 +84,10 @@ public class DAOUsuarioRepository {
 	
 	
 	//Método para buscar usuário
-	public List<ModelLogin> consultaUsuarioList() throws Exception{
+	public List<ModelLogin> consultaUsuarioList(Long userLogado) throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login where useradmin is false order by id desc;";
+		String sql = "select * from model_login where useradmin is false and usuario_id = " + userLogado + " order by id desc;";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
 		ResultSet resultado = statement.executeQuery();
@@ -108,8 +110,34 @@ public class DAOUsuarioRepository {
 	}
 	
 	
+		//Método para consulta usuário logado
+		public ModelLogin consultaUsuarioLogado(String login) throws Exception {
+		
+		//Objeto
+		ModelLogin modelLogin = new ModelLogin();
+		
+		//Preparado o SQL para consulta no BD
+		String sql = "select * from model_login where upper(login) = upper('"+login+"')";
+		
+		//Setado os parâmetros
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		//Executado o sql
+		ResultSet resultado =  statement.executeQuery();
+		 
+		while (resultado.next()) {//Se tem resultado
+			 modelLogin.setId(resultado.getLong("id"));
+			 modelLogin.setNome(resultado.getString("nome"));
+			 modelLogin.setEmail(resultado.getString("email"));
+			 modelLogin.setLogin(resultado.getString("login"));
+			 modelLogin.setSenha(resultado.getString("senha"));
+		 }
+		 
+		return modelLogin;
+	}
 	
-	//Método para consultar usuário
+	
+	//Método consultar usuário pelo login
 	public ModelLogin consultaUsuario(String login) throws Exception {
 		
 		//Objeto
@@ -136,18 +164,47 @@ public class DAOUsuarioRepository {
 	}
 	
 	
+	
+	//Método para consultar usuário
+	public ModelLogin consultaUsuario(String login, Long userLogado) throws Exception {
+		
+		//Objeto
+		ModelLogin modelLogin = new ModelLogin();
+		
+		//Preparado o SQL para consulta no BD
+		String sql = "select * from model_login where upper(login) = upper('"+login+"') and useradmin is false and usuario_id = " + userLogado;
+		
+		//Setado os parâmetros
+		PreparedStatement statement = connection.prepareStatement(sql);
+		
+		//Executado o sql
+		ResultSet resultado =  statement.executeQuery();
+		 
+		while (resultado.next()) {//Se tem resultado
+			 modelLogin.setId(resultado.getLong("id"));
+			 modelLogin.setNome(resultado.getString("nome"));
+			 modelLogin.setEmail(resultado.getString("email"));
+			 modelLogin.setLogin(resultado.getString("login"));
+			 modelLogin.setSenha(resultado.getString("senha"));
+		 }
+		 
+		return modelLogin;
+	}
+	
+	
 	//Método para consultar usuário por id
-		public ModelLogin consultaUsuarioID(String id) throws Exception {
+		public ModelLogin consultaUsuarioID(String id, Long userLogado) throws Exception {
 			
 			//Objeto
 			ModelLogin modelLogin = new ModelLogin();
 			
 			//Preparado o SQL para consulta no BD
-			String sql = "select * from model_login where id = ? and useradmin is false";
+			String sql = "select * from model_login where id = ? and useradmin is false and usuario_id = ?";
 			
 			//Setado os parâmetros
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setLong(1, Long.parseLong(id));
+			statement.setLong(2, userLogado);
 			
 			//Executado o sql
 			ResultSet resultado =  statement.executeQuery();

@@ -43,7 +43,7 @@ WITH (
 ALTER TABLE public.model_login
   OWNER TO postgres;
 
---------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------
 ALTER TABLE public.model_login
   OWNER TO postgres;
 
@@ -52,8 +52,15 @@ INSERT INTO public.model_login(
             login, senha)
     VALUES ('admin', 'admin');
     
---------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Alteração na tabelta para não conseguir alterar os dados do usuário adm
 alter table model_login add column useradmin boolean not null default false ;
+
+----------------------------------------------------------------------------------------------------------
+Seperar tabelas do banco por usuário que está cadastrando
+alter table model_login add column usuario_id bigint not null default 63
+
+Apontar coluna usuario_id para quem fez o cadastro
+alter table model_login add constraint usuario_fk foreign key (usuario_id) references model_login (id);
 
   
