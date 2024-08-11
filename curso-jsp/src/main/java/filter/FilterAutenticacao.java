@@ -21,11 +21,8 @@ import connection.SingleConnectionBanco;
 												// mapeamento
 public class FilterAutenticacao implements Filter {
 	
-	
 	private static Connection connection;
 	
-	
-
 	public FilterAutenticacao() {
 	}
 

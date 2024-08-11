@@ -54,7 +54,6 @@ public class DAOUsuarioRepository {
 		return this.consultaUsuario(objeto.getLogin(), userLogado);
 	}
 	
-	
 	//Método para buscar usuário
 	public List<ModelLogin> consultaUsuarioList(String nome, Long userLogado) throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
@@ -82,7 +81,6 @@ public class DAOUsuarioRepository {
 		return retorno;
 	}
 	
-	
 	//Método para buscar usuário
 	public List<ModelLogin> consultaUsuarioList(Long userLogado) throws Exception{
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
@@ -108,7 +106,6 @@ public class DAOUsuarioRepository {
 		
 		return retorno;
 	}
-	
 	
 		//Método para consulta usuário logado
 		public ModelLogin consultaUsuarioLogado(String login) throws Exception {
@@ -162,8 +159,6 @@ public class DAOUsuarioRepository {
 		 
 		return modelLogin;
 	}
-	
-	
 	
 	//Método para consultar usuário
 	public ModelLogin consultaUsuario(String login, Long userLogado) throws Exception {
@@ -243,21 +238,3 @@ public class DAOUsuarioRepository {
 		
 }
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

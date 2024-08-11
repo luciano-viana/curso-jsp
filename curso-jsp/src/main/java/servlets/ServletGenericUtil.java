@@ -11,8 +11,6 @@ public class ServletGenericUtil extends HttpServlet implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	
-	
 	private DAOUsuarioRepository daoUsuarioRepository = new DAOUsuarioRepository(); 
 	
 	//Método que retorna o usuário logado
@@ -23,16 +21,5 @@ public class ServletGenericUtil extends HttpServlet implements Serializable {
 		String usuariologado = (String) session.getAttribute("usuario");
 		
 		return daoUsuarioRepository.consultaUsuarioLogado(usuariologado).getId();
-		
 	}
 }
-
-
-
-
-
-
-
-
-
-
