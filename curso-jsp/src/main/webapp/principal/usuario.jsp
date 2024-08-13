@@ -1,3 +1,5 @@
+<%@page import="model.ModelLogin"%>
+<%@page import="javax.management.modelmbean.ModelMBeanOperationInfo"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
@@ -70,10 +72,32 @@
                                                             
                                                             <div class="form-group form-default form-static-label">
                                                             <select class="form-control" aria-label="Default select example" name="perfil">
-															  <option disabled="disabled">[Selecione o Perfil]</option>
-															  <option value="ADMIN">Admin</option>
-															  <option value="SECRETARIA">Secretária</option>
-															  <option value="AUXILIAR">Auxiliar</option>
+															  <option disabled="disabled" ">[Selecione o Perfil]</option>
+															  
+															  <option value="ADMIN" <%
+															  ModelLogin modelLogin = (ModelLogin)request.getAttribute("modolLogin");
+															  if(modelLogin != null && modelLogin.getPerfil().equals("ADMIN")){
+																  out.print(" ");
+																  out.print("selected=\"selected\"");
+																  out.print(" ");
+															  } %>>Admin</option>
+															  
+															  <option value="SECRETARIA" <%
+															  modelLogin = (ModelLogin)request.getAttribute("modolLogin");
+															  if(modelLogin != null && modelLogin.getPerfil().equals("SECRETARIA")){
+																  out.print(" ");
+																  out.print("selected=\"selected\"");
+																  out.print(" ");
+															  } %>>Secretária</option>
+															  
+															  <option value="AUXILIAR" <%
+															  modelLogin = (ModelLogin)request.getAttribute("modolLogin");
+															  if(modelLogin != null && modelLogin.getPerfil().equals("AUXILIAR")){
+																  out.print(" ");
+																  out.print("selected=\"selected\"");
+																  out.print(" ");
+															  } %>">Auxiliar</option>
+															  
 															</select>
 															<span class="form-bar"></span>
                                                                 <label class="float-label">Perfil:</label>
