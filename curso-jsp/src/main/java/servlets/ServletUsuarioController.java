@@ -61,11 +61,13 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioList(nomeBusca, super.getUserLogado(request));
 		
 				ObjectMapper mapper = new ObjectMapper();
+				
 				String json = mapper.writeValueAsString(dadosJsonUser);
 				
 				response.getWriter().write(json);
 				
 			}else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
+				
 				String id = request.getParameter("id");
 				
 				ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(id, super.getUserLogado(request));
@@ -96,6 +98,7 @@ public class ServletUsuarioController extends ServletGenericUtil{
 			}
 				
 		}catch (Exception e) {
+			e.printStackTrace();
 			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");//direcionar para a tela erro
 			request.setAttribute("msg", e.getMessage());//informar mensagem para o usuário
 			redirecionar.forward(request, response);//dá o comando de redirecionamento e volta para tela mostrando a mensagem
@@ -116,15 +119,18 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		String perfil = request.getParameter("perfil");
+		String sexo = request.getParameter("sexo");
 		
 		//Iniciar um objeto
 		ModelLogin modelLogin = new ModelLogin();
+		
 		modelLogin.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : null);
 		modelLogin.setNome(nome);
 		modelLogin.setEmail(email);
 		modelLogin.setLogin(login);
 		modelLogin.setSenha(senha);
 		modelLogin.setPerfil(perfil);
+		modelLogin.setSexo(sexo);
 		
 		if(daoUsuarioRepository.validarLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
 			msg = "Já existe usuário com o mesmo login, informe outro login!";
@@ -148,7 +154,6 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		
 		}catch (Exception e) {
 			e.printStackTrace();
-			
 			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");//direcionar para a tela erro
 			request.setAttribute("msg", e.getMessage());//informar mensagem para o usuário
 			redirecionar.forward(request, response);//dá o comando de redirecionamento e volta para tela mostrando a mensagem
