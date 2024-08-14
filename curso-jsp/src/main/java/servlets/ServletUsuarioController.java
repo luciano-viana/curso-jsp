@@ -2,6 +2,7 @@ package servlets;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DAOUsuarioRepository;
 
+@MultipartConfig //Anotação utilizada para preparar para upload
 @WebServlet(urlPatterns = {"/ServletUsuarioController"})/*Mapemaento de URL que vem da tela*/
 public class ServletUsuarioController extends ServletGenericUtil{
 	
