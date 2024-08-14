@@ -35,8 +35,8 @@ public class DAOUsuarioRepository {
 		preparedSql.setString(6, objeto.getPerfil());
 		preparedSql.setString(7, objeto.getSexo());
 		
-		
 		preparedSql.execute();
+		
 		connection.commit();
 		
 		}else {
@@ -59,8 +59,11 @@ public class DAOUsuarioRepository {
 		return this.consultaUsuario(objeto.getLogin(), userLogado);
 	}
 	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+	
 	//Método para buscar usuário
-	public List<ModelLogin> consultaUsuarioList(String nome, Long userLogado) throws Exception{
+	public List<ModelLogin> consultaUsuarioList(String nome,Long userLogado) throws Exception{
+		
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
 		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? order by id;";
@@ -87,6 +90,8 @@ public class DAOUsuarioRepository {
 		
 		return retorno;
 	}
+	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	//Método para buscar usuário
 	public List<ModelLogin> consultaUsuarioList(Long userLogado) throws Exception{
@@ -116,7 +121,9 @@ public class DAOUsuarioRepository {
 		return retorno;
 	}
 	
-		//Método para consulta usuário logado
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+	    //Método para consulta usuário logado
 		public ModelLogin consultaUsuarioLogado(String login) throws Exception {
 		
 		//Objeto
@@ -145,6 +152,7 @@ public class DAOUsuarioRepository {
 		return modelLogin;
 	}
 	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------	
 	
 	//Método consultar usuário pelo login
 	public ModelLogin consultaUsuario(String login) throws Exception {
@@ -173,7 +181,8 @@ public class DAOUsuarioRepository {
 		 
 		return modelLogin;
 	}
-	
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
 	//Método para consultar usuário
 	public ModelLogin consultaUsuario(String login, Long userLogado) throws Exception {
 		
@@ -202,6 +211,7 @@ public class DAOUsuarioRepository {
 		return modelLogin;
 	}
 	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------	
 	
 	//Método para consultar usuário por id
 		public ModelLogin consultaUsuarioID(String id, Long userLogado) throws Exception {
@@ -233,6 +243,7 @@ public class DAOUsuarioRepository {
 			return modelLogin;
 		}
 	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	public boolean validarLogin(String login) throws Exception{
 		String sql = "select count(1) > 0 as existe from model_login where upper(login) = upper('"+login+"');";
@@ -244,6 +255,8 @@ public class DAOUsuarioRepository {
 		resultado.next();//Para ele entrar nos resultados do sql
 		return resultado.getBoolean("existe");
 	}
+	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	public void deletarUser(String idUser) throws Exception {
 		String sql = "DELETE FROM model_login WHERE id = ? and useradmin is false "; //Montou SQL
