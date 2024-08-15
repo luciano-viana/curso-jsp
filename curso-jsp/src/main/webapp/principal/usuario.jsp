@@ -60,9 +60,9 @@
                                                             
                                                             <div class="form-group form-default input-group mb-4">
                                                                <div class="input-group-prepend">
-                                                               <img alt="Imagem User" src="https://enotas.com.br/blog/wp-content/uploads/2021/02/linguagem-de-programa%C3%A7%C3%A3o.jpg" width="70px">
+                                                               <img alt="Imagem User" id="fotoembase64" src="" width="70px">
                                                                </div>
-                                                               <input type="file" class="form-control-file" style="margin-top: 15px; margin-left:5px;" >
+                                                               <input type="file" id="fileFoto" name="fileFoto" accept="image/*" onchange="visualizarImg('fotoembase64','fileFoto');"  class="form-control-file" style="margin-top: 15px; margin-left:5px;" >
                                                             </div>
                                                             
                                                             <div class="form-group form-default">
@@ -242,6 +242,25 @@
 </div>
 	
 	<script type="text/javascript">
+	
+	function visualizarImg(fotoembase64,filefoto) {
+		
+		//alert('teste chamar função');
+		
+		var preview = document.getElementById(fotoembase64);//Campo IMG html
+		var fileUser = document.getElementById(filefoto).files[0];
+		var reader = new FileReader();
+		
+		reader.onloadend = function(){
+			preview.src = reader.result;//Carrega a foto na tela
+		};
+		
+		if(fileUser){
+			reader.readAsDataURL(fileUser);//Preview da imagem
+		}else{
+			preview.src = '';
+		}
+	}
 	
 	
 	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->

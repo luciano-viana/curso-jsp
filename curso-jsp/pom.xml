@@ -9,14 +9,23 @@
   
   
   <dependencies>
-  <!--
-	<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>javax.servlet-api</artifactId>
-	    <version>4.0.1</version>
-	    <scope>provided</scope>
+   
+   
+		<dependency>
+		<groupId>tomcat</groupId>
+		<artifactId>tomcat-util</artifactId>
+		<version>5.5.23</version>
 	</dependency>
-	-->
+	<dependency>
+		<groupId>org.apache.tomcat</groupId>
+		<artifactId>tomcat-coyote</artifactId>
+		<version>10.1.0-M5</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-compress</artifactId>
+		<version>1.21</version>
+	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 	<dependency>
@@ -32,13 +41,7 @@
 	    <version>2.9.8</version>
 	</dependency>
 	
-	<!--
-	<dependency>
-	    <groupId>javax.servlet.jsp.jstl</groupId>
-	    <artifactId>jstl-api</artifactId>
-	    <version>1.2</version>
-	</dependency>
-	-->
+	
 	
 	<dependency>
 	    <groupId>org.glassfish.web</groupId>
@@ -46,6 +49,7 @@
 	    <version>2.0.0</version>
 	</dependency>
 
+	
 
   </dependencies>
   
