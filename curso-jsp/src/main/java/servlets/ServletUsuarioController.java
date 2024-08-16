@@ -140,7 +140,6 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		modelLogin.setPerfil(perfil);
 		modelLogin.setSexo(sexo);
 		
-		
 		if(daoUsuarioRepository.validarLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
 			msg = "Já existe usuário com o mesmo login, informe outro login!";
 		}else {
