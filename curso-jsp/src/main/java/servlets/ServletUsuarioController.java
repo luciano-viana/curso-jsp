@@ -140,6 +140,14 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		modelLogin.setPerfil(perfil);
 		modelLogin.setSexo(sexo);
 		
+		if(ServletFileUpload.isMultipartContent(request)) {
+			Part part = request.getPart("fileFoto");//Pega foto da tela
+			byte[] foto = IOUtils.toByteArray(part.getInputStream());//Converte imagem para byte
+			String imagemBase64 = new Base64().encodeBase64String(foto);
+			System.out.println(imagemBase64);
+			
+		}
+		
 		if(daoUsuarioRepository.validarLogin(modelLogin.getLogin()) && modelLogin.getId() == null) {
 			msg = "Já existe usuário com o mesmo login, informe outro login!";
 		}else {
