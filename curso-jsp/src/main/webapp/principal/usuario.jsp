@@ -1,6 +1,6 @@
 <%@page import="model.ModelLogin"%>
 <%@page import="javax.management.modelmbean.ModelMBeanOperationInfo"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 	
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <!-- Declaração do JSP para trabalhar com o mesmo no projeto -->
@@ -118,6 +118,44 @@
 															<span class="form-bar"></span>
                                                                 <label class="float-label">Perfil:</label>
 															</div>
+															
+															<div class="form-group form-default">
+                                                                <input onblur="pesquisaCep();" type="text" name="cep" id="cep" class="form-control" required="required" value="${modolLogin.cep}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Cep:</label>
+                                                            </div>
+															
+															<div class="form-group form-default">
+                                                                <input type="text" name="logradouro" id="logradouro" class="form-control" required="required" value="${modolLogin.logradouro}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Logradouro:</label>
+                                                            </div>
+                                                            
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="bairro" id="bairro" class="form-control" required="required" value="${modolLogin.bairro}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Bairro:</label>
+                                                            </div>
+                                                            
+                                                            <div class="form-group form-default">
+                                                                <input type="text" name="localidade" id="localidade" class="form-control" required="required" value="${modolLogin.localidade}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Localidade:</label>
+                                                            </div>
+                                                            
+                                                             <div class="form-group form-default">
+                                                                <input type="text" name="uf" id="uf" class="form-control" required="required" value="${modolLogin.uf}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Estado:</label>
+                                                            </div>
+                                                            
+                                                            
+                                                             <div class="form-group form-default">
+                                                                <input type="text" name="numero" id="numero" class="form-control" required="required" value="${modolLogin.numero}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Numero:</label>
+                                                            </div>
+															
                                                             
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="login" id="login" class="form-control" required="required" value="${modolLogin.login}">
@@ -251,6 +289,25 @@
 </div>
 	
 	<script type="text/javascript">
+	
+	function pesquisaCep() {
+		
+		var cep = $("#cep").val();
+		
+		 $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+		
+			 if (!("erro" in dados)) {
+				//Atualiza os campos com os valores da consulta.
+				 $("#cep").val(dados.cep);
+                 $("#logradouro").val(dados.logradouro);
+                 $("#bairro").val(dados.bairro);
+                 $("#localidade").val(dados.localidade);
+                 $("#uf").val(dados.uf);
+			 }
+
+		
+		});
+	}
 	
 	function visualizarImg(fotoembase64,filefoto) {
 		
