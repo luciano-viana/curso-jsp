@@ -61,7 +61,9 @@
                                                             <div class="form-group form-default input-group mb-4">
                                                                <div class="input-group-prepend">
                                                                <c:if test="${modolLogin.fotouser != '' && modolLogin.fotouser != null}">
+                                                               <a href="<%=request.getContextPath()%>/ServletUsuarioController?acao=downloadFoto&id=${modolLogin.id}">
                                                                   <img alt="Imagem User" id="fotoembase64" src="${modolLogin.fotouser}" width="70px">
+                                                               </a>
                                                                </c:if>
                                                                
                                                                <c:if test="${modolLogin.fotouser == '' || modolLogin.fotouser == null}">
