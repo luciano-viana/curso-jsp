@@ -18,6 +18,7 @@ import org.apache.tomcat.jakartaee.commons.compress.utils.IOUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dao.DAOUsuarioRepository;
@@ -116,6 +117,18 @@ public class ServletUsuarioController extends ServletGenericUtil{
 					response.setHeader("Content-Disposition", "attachment;filename=arquivo." + modelLogin.getExtensafotouser());
 					response.getOutputStream().write(new Base64().decode(modelLogin.getFotouser().split("\\,")[1]));
 				}
+				
+			}
+			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("paginar")) {
+				Integer offset = Integer.parseInt(request.getParameter("pagina"));
+				
+				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioListPaginada(this.getUserLogado(request), offset);
+				
+				request.setAttribute("modolLogins", modelLogins);
+				//Montar a paginação
+				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
+				
+				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 				
 			}
 			

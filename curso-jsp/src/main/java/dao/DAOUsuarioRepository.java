@@ -176,6 +176,8 @@ public class DAOUsuarioRepository {
 		
 		ResultSet resultado = statement.executeQuery();
 		
+		resultado.next();
+		
 		Double cadastros = resultado.getDouble("total");
 		
 		Double porpagina = 5.0;
