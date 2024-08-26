@@ -50,6 +50,10 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				request.setAttribute("modolLogins", modelLogins);
 				
 				request.setAttribute("msg", "Ecluido com sucesso!");
+				
+				//Montar a paginação
+				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
+				
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 				
 				
@@ -85,6 +89,8 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				
 				request.setAttribute("msg", "Usuário em edição");
 				request.setAttribute("modolLogin", modelLogin);
+				//Montar a paginação
+				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
 				//Redirecionar para não ter tela em branco
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 				
@@ -95,6 +101,8 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				
 				request.setAttribute("msg", "Usuários carregados");
 				request.setAttribute("modolLogins", modelLogins);
+				//Montar a paginação
+				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 			}
 			else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("downloadFoto")) {
@@ -114,6 +122,8 @@ public class ServletUsuarioController extends ServletGenericUtil{
 			else {
 				List<ModelLogin> modelLogins = daoUsuarioRepository.consultaUsuarioList(super.getUserLogado(request));
 				request.setAttribute("modolLogins", modelLogins);
+				//Montar a paginação
+				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
 				
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 				
@@ -197,6 +207,9 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("modolLogin", modelLogin);
+		//Montar a paginação
+		request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
+		
 		//Redirecionar para não ter tela em branco
 		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 		

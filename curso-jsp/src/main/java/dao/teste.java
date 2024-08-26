@@ -4,7 +4,7 @@ public class teste {
 
 	public static void main(String[] args) {
 		
-		Double cadastros = 8.0;
+		Double cadastros = 24.0;
 		
 		Double porpagina = 5.0;
 		
