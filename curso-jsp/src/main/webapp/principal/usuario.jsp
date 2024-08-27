@@ -125,8 +125,8 @@
                                                                 <label class="float-label">Cep:</label>
                                                             </div>
 															
-															<div class="form-group form-default">
-                                                                <input type="text" name="logradouro" id="logradouro" class="form-control" required="required" value="${modolLogin.logradouro}">
+															<div class="form-group form-default form-static-label">
+                                                                <input type="text" name="logradouro" id="logradouro" class="form-control" required="required" autocomplete="off" value="${modolLogin.logradouro}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Logradouro:</label>
                                                             </div>
@@ -316,7 +316,6 @@
                  $("#localidade").val(dados.localidade);
                  $("#uf").val(dados.uf);
 			 }
-
 		
 		});
 	}

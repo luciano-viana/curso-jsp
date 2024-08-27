@@ -167,7 +167,7 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		String sexo = request.getParameter("sexo");
 		
 		String cep = request.getParameter("cep");
-		String lougradouro = request.getParameter("lougradouro");
+		String logradouro = request.getParameter("logradouro");
 		String bairro = request.getParameter("bairro");
 		String localidade = request.getParameter("localidade");
 		String uf = request.getParameter("uf");
@@ -185,7 +185,7 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		modelLogin.setSexo(sexo);
 		
 		modelLogin.setCep(cep);
-		modelLogin.setLogradouro(lougradouro);
+		modelLogin.setLogradouro(logradouro);
 		modelLogin.setBairro(bairro);
 		modelLogin.setLocalidade(localidade);
 		modelLogin.setUf(uf);

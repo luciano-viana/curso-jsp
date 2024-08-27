@@ -24,7 +24,7 @@ public class DAOUsuarioRepository {
 		
 		if(objeto.isNovo()) {//Grava um novo usuário
 		
-		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil, sexo, cep, lougradouro, bairro, localidade, uf, numero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil, sexo, cep, logradouro, bairro, localidade, uf, numero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
 		
 		preparedSql.setString(1, objeto.getLogin());
@@ -63,7 +63,7 @@ public class DAOUsuarioRepository {
 			}
 		
 		}else {
-			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?,perfil=?, sexo=?, cep=?,logradouro=?, bairro=?, localidade=?, uf=?, numero=?  WHERE id = "+objeto.getId()+";";
+			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?, perfil=?, sexo=?, cep=?, logradouro=?, bairro=?, localidade=?, uf=?, numero=?  WHERE id = "+objeto.getId()+";";
 			
 			PreparedStatement prepareSql = connection.prepareStatement(sql);
 			
@@ -143,9 +143,10 @@ public class DAOUsuarioRepository {
 	
 		//Método para buscar usuário
 		public List<ModelLogin> consultaUsuarioListPaginada(Long userLogado, Integer offset) throws Exception{
-			List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 			
-			String sql = "select * from model_login where useradmin is false and usuario_id = " + userLogado + "  order by nome offset " +offset+ " limit 5;";
+			List<ModelLogin> retorno = new ArrayList<ModelLogin>();
+			//alterei aqui, estava somente = order by nome
+			String sql = "select * from model_login where useradmin is false and usuario_id = " + userLogado + " order by id desc offset " +offset+ " limit 5;"; 
 			
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
@@ -198,9 +199,10 @@ public class DAOUsuarioRepository {
 	
 	//Método para buscar usuário
 	public List<ModelLogin> consultaUsuarioList(Long userLogado) throws Exception{
+		
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login where useradmin is false and usuario_id = " + userLogado + "  order by id desc limit 5;" ;
+		String sql = "select * from model_login where useradmin is false and usuario_id = " + userLogado + " order by id desc limit 5;" ;
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
 		ResultSet resultado = statement.executeQuery();
@@ -242,6 +244,7 @@ public class DAOUsuarioRepository {
 		ResultSet resultado =  statement.executeQuery();
 		 
 		while (resultado.next()) {//Se tem resultado
+			
 			 modelLogin.setId(resultado.getLong("id"));
 			 modelLogin.setNome(resultado.getString("nome"));
 			 modelLogin.setEmail(resultado.getString("email"));
@@ -358,6 +361,7 @@ public class DAOUsuarioRepository {
 			ResultSet resultado =  statement.executeQuery();
 			 
 			while (resultado.next()) {//Se tem resultado
+				
 				 modelLogin.setId(resultado.getLong("id"));
 				 modelLogin.setNome(resultado.getString("nome"));
 				 modelLogin.setEmail(resultado.getString("email"));
