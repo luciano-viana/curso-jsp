@@ -114,7 +114,7 @@ public class DAOUsuarioRepository {
 		
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
 		
-		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? order by id;" + userLogado + " limit 5" ;
+		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? order by id desc limit 5" ;
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, "%" + nome + "%");
 		statement.setLong(2, userLogado);
