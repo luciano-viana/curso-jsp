@@ -21,14 +21,14 @@
 
 			<div class="main-menu-content">
 				<ul>
-					<li class="more-details"><a href="user-profile.html"><i
-							class="ti-user"></i>View Profile</a> <a href="#!"><i
-							class="ti-settings"></i>Settings</a> <a
-						href="<%=request.getContextPath()%>/ServletLogin?acao=logout"><i
-							class="ti-layout-sidebar-left"></i>Logout</a></li>
+					<li class="more-details">
+					        <!--  <a href="user-profile.html"> <i class="ti-user"></i>View Profile</a> <a href="#!"><i -->
+							<!-- class="ti-settings"></i>Settings</a> -->
+							<a href="<%=request.getContextPath()%>/ServletLogin?acao=logout"><i class="ti-layout-sidebar-left"></i>Sair</a></li>
 				</ul>
 			</div>
 		</div>
+		<!--  
 		<div class="p-15 p-b-0">
 			<form class="form-material">
 				<div class="form-group form-primary">
@@ -38,20 +38,20 @@
 						Friend</label>
 				</div>
 			</form>
-		</div>
-		<div class="pcoded-navigation-label"
-			data-i18n="nav.category.navigation">Layout</div>
+		</div>-->
+		
+		<!--  <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div> -->
 		<ul class="pcoded-item pcoded-left-item">
-			<li class="active"><a href="index.html"
-				class="waves-effect waves-dark"> <span class="pcoded-micon"><i
-						class="ti-home"></i><b>D</b></span> <span class="pcoded-mtext"
-					data-i18n="nav.dash.main">Dashboard</span> <span
-					class="pcoded-mcaret"></span>
+			<li class="active">
+			<a href="<%=request.getContextPath()%>/principal/principal.jsp" class="waves-effect waves-dark" style="margin-top: 8px;"> 
+			<span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span> 
+			<span class="pcoded-mtext" data-i18n="nav.dash.main">Início</span> 
+			<span class="pcoded-mcaret"></span>
 			</a></li>
 			<li class="pcoded-hasmenu"><a href="javascript:void(0)"
 				class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 						class="ti-layout-grid2-alt"></i></span> <span class="pcoded-mtext"
-					data-i18n="nav.basic-components.main">Components</span> <span
+					data-i18n="nav.basic-components.main">Cadastro</span> <span
 					class="pcoded-mcaret"></span>
 			</a>
 				<ul class="pcoded-submenu">
@@ -64,6 +64,7 @@
 					</a></li>
 					</c:if>
 					
+					<!--  
 					<li class=" "><a href="breadcrumb.html"
 						class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 								class="ti-angle-right"></i></span> <span class="pcoded-mtext"
@@ -118,29 +119,33 @@
 							data-i18n="nav.basic-components.breadcrumbs">Themify</span> <span
 							class="pcoded-mcaret"></span>
 					</a></li>
+					
+					-->
 
 				</ul></li>
 		</ul>
-		<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Forms
-			&amp; Tables</div>
+		<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Relatório</div>
 		<ul class="pcoded-item pcoded-left-item">
 			<li><a href="form-elements-component.html"
 				class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 						class="ti-layers"></i><b>FC</b></span> <span class="pcoded-mtext"
-					data-i18n="nav.form-components.main">Form Components</span> <span
+					data-i18n="nav.form-components.main">Usuário</span> <span
 					class="pcoded-mcaret"></span>
 			</a></li>
+			
+			<!--  
 			<li><a href="bs-basic-table.html"
 				class="waves-effect waves-dark"> <span class="pcoded-micon"><i
 						class="ti-layers"></i><b>FC</b></span> <span class="pcoded-mtext"
 					data-i18n="nav.form-components.main">Basic Table</span> <span
 					class="pcoded-mcaret"></span>
 			</a></li>
+			-->
 
 		</ul>
 
-		<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Chart
-			&amp; Maps</div>
+        <!--  
+		<div class="pcoded-navigation-label" data-i18n="nav.category.forms">Chart &amp; Maps</div>
 		<ul class="pcoded-item pcoded-left-item">
 			<li><a href="chart.html" class="waves-effect waves-dark"> <span
 					class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span> <span
@@ -219,5 +224,7 @@
 
 				</ul></li>
 		</ul>
+		-->
+		
 	</div>
 </nav>
