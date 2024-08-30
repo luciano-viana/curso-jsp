@@ -339,7 +339,6 @@
 		}
 	}
 	
-	
 	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	function verEditar(id) {
 		
@@ -365,7 +364,7 @@
 				method: "get",
 				url : urlAction,
 				data : "nomeBusca=" + nomeBusca + '&acao=buscarUserAjax',
-				success : function(response){
+				success : function(response, textStatus, xhr){
 				
 				var json = JSON.parse(response);
 				
@@ -380,6 +379,12 @@
 				}
 				
 				document.getElementById('totalResultados').textContent = 'Resultados: ' + json.length;
+				
+				var totalPagina = xhr.getResponseHeader("totalPagina");
+				
+				for(int p = 0; p < totalPagina; p++){
+				
+				}
 
 				}
 				
@@ -450,7 +455,6 @@
 	}
 	
 	</script>
-	
 	
 </body>
 

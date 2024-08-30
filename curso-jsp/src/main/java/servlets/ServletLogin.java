@@ -38,7 +38,6 @@ public class ServletLogin extends HttpServlet {
 			doPost(request, response);
 		}
 		
-
 	}
 
 	// Recebe os dados enviados por um formulário

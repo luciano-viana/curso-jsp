@@ -86,7 +86,6 @@ public class DAOUsuarioRepository {
 			
 			connection.commit();
 			
-			
 					if(objeto.getFotouser() != null && !objeto.getFotouser().isEmpty()) {
 						sql = "update model_login set fotouser =?, extensafotouser=? where id =?";
 						
@@ -101,10 +100,40 @@ public class DAOUsuarioRepository {
 						connection.commit();
 					}
 			
-			
 		}
 		
 		return this.consultaUsuario(objeto.getLogin(), userLogado);
+	}
+	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	//Método para buscar usuário por taltal de página	
+public int consultaUsuarioListTotalPaginaacao(String nome,Long userLogado) throws Exception{
+		
+		String sql = "select count(1) as total from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ?";
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, "%" + nome + "%");
+		statement.setLong(2, userLogado);
+		
+		ResultSet resultado = statement.executeQuery();
+		
+		resultado.next();
+		
+		Double cadastros = resultado.getDouble("total");
+		
+		Double porpagina = 5.0;
+		
+		Double pagina = cadastros / porpagina;
+		
+		Double resto = pagina % 2;
+		
+		if(resto > 0) {
+			pagina ++;
+		}
+		
+		return pagina.intValue();
+		
 	}
 	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -408,4 +437,3 @@ public class DAOUsuarioRepository {
 	}
 		
 }
-	

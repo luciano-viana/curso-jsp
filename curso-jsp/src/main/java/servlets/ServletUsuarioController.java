@@ -77,6 +77,7 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				
 				String json = mapper.writeValueAsString(dadosJsonUser);
 				
+				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginaacao(nomeBusca, super.getUserLogado(request)));
 				response.getWriter().write(json);
 				
 			}else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
@@ -129,7 +130,6 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
 				
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
-				
 			}
 			
 			else {
