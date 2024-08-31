@@ -290,6 +290,12 @@
         </table>
         </div>
         
+        <nav aria-label="Page navigation example">
+		<ul class="pagination" id="ulPaginacaoUserAjax">
+		
+		</ul>
+		</nav>
+        
         <span id="totalResultados"></span>
         
       </div>
@@ -352,6 +358,50 @@
 	}
 	
 	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+	function buscaUserPagAjax(url) {
+
+		 var urlAction = document.getElementById('formUser').action;
+		 
+		 $.ajax({
+				method: "get",
+				url : urlAction,
+				data : url,
+				success : function(response, textStatus, xhr){
+				
+				var json = JSON.parse(response);
+				
+				//alert(json);
+				//console.info(json);
+				
+				//função jquery
+				$('#tabelaresultados > tbody > tr').remove();
+				$("#ulPaginacaoUserAjax > li").remove();
+				
+				for(var p = 0; p < json.length; p++){
+				  $('#tabelaresultados > tbody').append('<tr> <td>'+json[p].id+'</td> <td>'+json[p].nome+'</td> <td><button onclick="verEditar('+json[p].id+')" type="button" class="btn btn-info">Ver</button></td> </tr>');
+				}
+				
+				document.getElementById('totalResultados').textContent = 'Resultados: ' + json.length;
+				
+				var totalPagina = xhr.getResponseHeader("totalPagina");
+				
+				for(var p = 0; p < totalPagina; p++){
+
+					var url = urlAction + '?nomeBusca' + nomeBusca + '&acao=buscarUserAjaxPage&pagina=' + (p * 5);
+					//alert(url)
+					
+					$("#ulPaginacaoUserAjax").append('<li class="page-item"><a class="page-link" href="#" onclick="buscaUserPagAjax(\''+url+'\')">' + (p + 1) + '</a></li>');
+				}
+
+				}
+				
+			}).fail(function(xhr, status, errorThrown){
+				alert('Erro ao buscar usuário por nome: ' + xhr.responseText);
+			});
+		
+	}
+	
+	<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 	function buscarUsuario() {
 		var nomeBusca = document.getElementById('nomeBusca').value;
 		
@@ -373,6 +423,7 @@
 				
 				//função jquery
 				$('#tabelaresultados > tbody > tr').remove();
+				$("#ulPaginacaoUserAjax > li").remove();
 				
 				for(var p = 0; p < json.length; p++){
 				  $('#tabelaresultados > tbody').append('<tr> <td>'+json[p].id+'</td> <td>'+json[p].nome+'</td> <td><button onclick="verEditar('+json[p].id+')" type="button" class="btn btn-info">Ver</button></td> </tr>');
@@ -382,8 +433,12 @@
 				
 				var totalPagina = xhr.getResponseHeader("totalPagina");
 				
-				for(int p = 0; p < totalPagina; p++){
-				
+				for(var p = 0; p < totalPagina; p++){
+
+					var url = '?nomeBusca' + nomeBusca + '&acao=buscarUserAjaxPage&pagina=' + (p * 5);
+					//alert(url)
+					
+					$("#ulPaginacaoUserAjax").append('<li class="page-item"><a class="page-link"  href="#" onclick="buscaUserPagAjax(\''+url+'\')">' + (p + 1) + '</a></li>');
 				}
 
 				}

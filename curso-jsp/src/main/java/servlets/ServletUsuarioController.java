@@ -79,6 +79,21 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				
 				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginaacao(nomeBusca, super.getUserLogado(request)));
 				response.getWriter().write(json);
+			}
+			
+             else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarUserAjaxPage")) {
+				
+				String nomeBusca = request.getParameter("nomeBusca");
+				String pagina = request.getParameter("pagina");
+				
+				List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioList(nomeBusca, super.getUserLogado(request));
+		
+				ObjectMapper mapper = new ObjectMapper();
+				
+				String json = mapper.writeValueAsString(dadosJsonUser);
+				
+				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginaacao(nomeBusca, super.getUserLogado(request)));
+				response.getWriter().write(json);
 				
 			}else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
 				
