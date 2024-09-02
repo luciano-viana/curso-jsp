@@ -63,4 +63,29 @@ alter table model_login add column usuario_id bigint not null default 63
 Apontar coluna usuario_id para quem fez o cadastro
 alter table model_login add constraint usuario_fk foreign key (usuario_id) references model_login (id);
 
+----------------------------------------------------------------------------------------------------------
+Criar Tabela Telefone
+CREATE SEQUENCE public.model_telefone_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+
+create table telefone (
+
+id integer not null default nextval('telefone_seq'::regclass),
+numero character varying(50) not null,
+usuario_pai_id bigint not null,
+usuario_cad_id bigint not null,
+
+constraint telefone_pkey primary key (id),
+constraint usuario_pai_fk foreign key(usuario_pai_id) references model_login(id),
+constraint usuario_cad_fk foreign key(usuario_cad_id) references model_login (id)
+
+)
+
+
+
   
