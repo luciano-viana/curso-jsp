@@ -108,9 +108,9 @@ public class DAOUsuarioRepository {
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	//Método para buscar usuário por taltal de página	
-public int consultaUsuarioListTotalPaginaacao(String nome,Long userLogado) throws Exception{
+public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws Exception{
 		
-		String sql = "select count(1) as total from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ?";
+		String sql = "select count(1) as total from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? ";
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, "%" + nome + "%");
@@ -135,10 +135,42 @@ public int consultaUsuarioListTotalPaginaacao(String nome,Long userLogado) throw
 		return pagina.intValue();
 		
 	}
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------
+//Método para buscar usuário por nome com OffSet
+	public List<ModelLogin> consultaUsuarioListOffSet(String nome,Long userLogado, int offset) throws Exception{
+		
+		List<ModelLogin> retorno = new ArrayList<ModelLogin>();
+		
+		String sql = "select * from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? order by id desc offset "+offset+" limit 5" ;
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, "%" + nome + "%");
+		statement.setLong(2, userLogado);
+		
+		ResultSet resultado = statement.executeQuery();
+		
+		while(resultado.next()) {//Percorrer as linhas de resultado do SQL
+			
+			ModelLogin modelLogin = new ModelLogin();
+			
+			modelLogin.setEmail(resultado.getString("email"));
+			modelLogin.setId(resultado.getLong("id"));
+			modelLogin.setLogin(resultado.getString("login"));
+			modelLogin.setNome(resultado.getString("nome"));
+			//modelLogin.setSenha(resultado.getString("senha"));
+			modelLogin.setPerfil(resultado.getString("perfil"));
+			modelLogin.setSexo(resultado.getString("sexo"));
+			 
+			retorno.add(modelLogin);
+		}
+		
+		return retorno;
+	}
 	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	//Método para buscar usuário
+	//Método para buscar usuário por nome
 	public List<ModelLogin> consultaUsuarioList(String nome,Long userLogado) throws Exception{
 		
 		List<ModelLogin> retorno = new ArrayList<ModelLogin>();

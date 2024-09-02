@@ -77,7 +77,7 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				
 				String json = mapper.writeValueAsString(dadosJsonUser);
 				
-				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginaacao(nomeBusca, super.getUserLogado(request)));
+				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginacao(nomeBusca, super.getUserLogado(request)));
 				response.getWriter().write(json);
 			}
 			
@@ -86,13 +86,13 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				String nomeBusca = request.getParameter("nomeBusca");
 				String pagina = request.getParameter("pagina");
 				
-				List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioList(nomeBusca, super.getUserLogado(request));
+				List<ModelLogin> dadosJsonUser = daoUsuarioRepository.consultaUsuarioListOffSet(nomeBusca, super.getUserLogado(request),Integer.parseInt(pagina));
 		
 				ObjectMapper mapper = new ObjectMapper();
 				
 				String json = mapper.writeValueAsString(dadosJsonUser);
 				
-				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginaacao(nomeBusca, super.getUserLogado(request)));
+				response.addHeader("totalPagina", "" + daoUsuarioRepository.consultaUsuarioListTotalPaginacao(nomeBusca, super.getUserLogado(request)));
 				response.getWriter().write(json);
 				
 			}else if(acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("buscarEditar")) {
