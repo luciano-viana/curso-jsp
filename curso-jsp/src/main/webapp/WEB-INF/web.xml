@@ -14,4 +14,14 @@
     <servlet-name>ServletUsuarioControler</servlet-name>
     <url-pattern>/ServletUsuarioControler</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletTelefone</display-name>
+    <servlet-name>ServletTelefone</servlet-name>
+    <servlet-class>servlets.ServletTelefone</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletTelefone</servlet-name>
+    <url-pattern>/ServletTelefone</url-pattern>
+  </servlet-mapping>
 </web-app>
