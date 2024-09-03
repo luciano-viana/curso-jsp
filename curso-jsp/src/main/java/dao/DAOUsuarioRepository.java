@@ -402,6 +402,49 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 		return modelLogin;
 	}
 	
+	//aqui
+	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------	
+//Método para consultar usuário por id será utilizado para carregar os dados no DAOTelefoneRepository
+			public ModelLogin consultaUsuarioID(Long id) throws Exception {
+				
+				//Objeto
+				ModelLogin modelLogin = new ModelLogin();
+				
+				//Preparado o SQL para consulta no BD
+				String sql = "select * from model_login where id = ? and useradmin is false";
+				
+				//Setado os parâmetros
+				PreparedStatement statement = connection.prepareStatement(sql);
+				statement.setLong(1, id);
+				
+				//Executado o sql
+				ResultSet resultado =  statement.executeQuery();
+				 
+				while (resultado.next()) {//Se tem resultado
+					
+					 modelLogin.setId(resultado.getLong("id"));
+					 modelLogin.setNome(resultado.getString("nome"));
+					 modelLogin.setEmail(resultado.getString("email"));
+					 modelLogin.setLogin(resultado.getString("login"));
+					 modelLogin.setSenha(resultado.getString("senha"));
+					 modelLogin.setPerfil(resultado.getString("perfil"));
+					 modelLogin.setSexo(resultado.getString("sexo"));
+					 modelLogin.setFotouser(resultado.getString("fotouser"));
+					 modelLogin.setExtensafotouser(resultado.getString("extensafotouser"));
+					 
+					 modelLogin.setCep(resultado.getString("cep"));
+					 modelLogin.setLogradouro(resultado.getString("logradouro"));
+					 modelLogin.setBairro(resultado.getString("bairro"));
+					 modelLogin.setLocalidade(resultado.getString("localidade"));
+					 modelLogin.setUf(resultado.getString("uf"));
+					 modelLogin.setNumero(resultado.getString("numero"));
+				 }
+				 
+				return modelLogin;
+			}
+	
+	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------	
 	
 	//Método para consultar usuário por id
