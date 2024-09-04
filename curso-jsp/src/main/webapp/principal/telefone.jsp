@@ -114,6 +114,14 @@
 	</div>
 
 	<jsp:include page="javascriptfile.jsp"></jsp:include>
+	
+<script type="text/javascript">
+//Função para o campo da tela aceitar somente números
+$("#numero").keypress(function(event){
+	return /\d/.test(String.fromCharCode(event.keyCode));
+});
+</script>
+	
 </body>
 
 </html>

@@ -314,6 +314,15 @@
 	
 	<script type="text/javascript">
 	
+	//Função para o campo da tela aceitar somente números
+	$("#numero").keypress(function(event){
+		return /\d/.test(String.fromCharCode(event.keyCode));
+	});
+	
+	$("#cep").keypress(function(event){
+		return /\d/.test(String.fromCharCode(event.keyCode));
+	});
+	
 	function pesquisaCep() {
 		
 		var cep = $("#cep").val();
