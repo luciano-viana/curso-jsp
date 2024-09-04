@@ -83,6 +83,12 @@
                                                                 <label class="float-label">Nome:</label>
                                                             </div>
                                                             
+                                                             <div class="form-group form-default">
+                                                                <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" required="required" value="${modolLogin.dataNascimento}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Data de Nascimento:</label>
+                                                            </div>
+                                                            
                                                             <div class="form-group form-default">
                                                                 <input type="email" name="email" id="email" class="form-control" required="required" autocomplete="off" value="${modolLogin.email}">
                                                                 <span class="form-bar"></span>
@@ -313,6 +319,21 @@
 </div>
 	
 	<script type="text/javascript">
+	
+	//Código para utilizar calendário do jQuery
+	$( function() {
+	  
+	  $("#dataNascimento").datepicker({
+		    dateFormat: 'dd/mm/yy',
+		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		    nextText: 'Próximo',
+		    prevText: 'Anterior'
+		});
+    } );
 	
 	//Função para o campo da tela aceitar somente números
 	$("#numero").keypress(function(event){
