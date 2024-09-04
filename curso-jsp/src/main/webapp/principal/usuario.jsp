@@ -39,12 +39,14 @@
 									<!-- Page-body start -->
 									<div class="page-body">
 
+                                        <!-- Base para motar o formulário com Bootstrap  -->
 										<div class="row">
 											<div class="col-sm-12">
 												<!-- Basic Form Inputs card start -->
 												<div class="card">
-													
 													<div class="card-block">
+													<!-- ----------------------------------- -->
+													
 														<h4 class="sub-title">Cadastro de Usuário</h4>
 
 														<form class="form-material" enctype="multipart/form-data" action="<%= request.getContextPath()%>/ServletUsuarioController" method="post" id="formUser">
@@ -74,6 +76,7 @@
                                                                <input type="file" id="fileFoto" name="fileFoto" accept="image/*" onchange="visualizarImg('fotoembase64','fileFoto');"  class="form-control-file" style="margin-top: 15px; margin-left:5px;" >
                                                             </div>
                                                             
+                                                            <!-- Campo de Texto -->
                                                             <div class="form-group form-default">
                                                                 <input type="text" name="nome" id="nome" class="form-control" required="required" value="${modolLogin.nome}">
                                                                 <span class="form-bar"></span>
@@ -208,8 +211,6 @@
 													<span id="msg">${msg}</span>
 													
 													<div style="height:300px; overflow: scroll; ">
-													
-													
 													<!-- tabela -->
 													<table class="table" id="tabelaresultadosview">
 											  	    <thead>
@@ -228,7 +229,6 @@
 											            <td><a class="btn btn-info" href="<%= request.getContextPath()%>/ServletUsuarioController?acao=deletar&id=${ml.id}">Excluir</a></td>
 											            </tr>
 											         </c:forEach>
-											         
 											        </tbody>
 											        </table>
 											        </div>
