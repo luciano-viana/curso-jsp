@@ -14,26 +14,35 @@ public class ModelLogin implements Serializable {
 	private String senha;
 	private String sexo;
 	private Date dataNascimento;
-	
+
 	private String fotouser;
 	private String extensafotouser;
-	
-	//Variáveis criadas para utilizar na integração da API de CEPs "viacep.com"
+
+	// Variáveis criadas para utilizar na integração da API de CEPs "viacep.com"
 	private String cep;
 	private String logradouro;
 	private String bairro;
 	private String localidade;
 	private String uf;
 	private String numero;
-	
+	private Double rendamensal;
+
+	public Double getRendamensal() {
+		return rendamensal;
+	}
+
+	public void setRendamensal(Double rendamensal) {
+		this.rendamensal = rendamensal;
+	}
+
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
-	
+
 	public String getCep() {
 		return cep;
 	}
@@ -101,37 +110,37 @@ public class ModelLogin implements Serializable {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
+
 	public String getSexo() {
 		return sexo;
 	}
-	
+
 	private boolean useradmin;
-	
+
 	private String perfil;
-	
+
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
-	
+
 	public String getPerfil() {
 		return perfil;
 	}
-	
+
 	public void setUseradmin(boolean useradmin) {
 		this.useradmin = useradmin;
 	}
-	
+
 	public boolean getUseradmin() {
 		return useradmin;
 	}
-	
+
 	public boolean isNovo() {
-		
-		if(this.id == null) {
-			return true;//Inserir um novo registro
-		}else if(this.id != null && this.id > 0) {
-			return false;//Atualizar
+
+		if (this.id == null) {
+			return true;// Inserir um novo registro
+		} else if (this.id != null && this.id > 0) {
+			return false;// Atualizar
 		}
 		return id == null;
 	}

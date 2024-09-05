@@ -24,7 +24,7 @@ public class DAOUsuarioRepository {
 		
 		if(objeto.isNovo()) {//Grava um novo usuário
 		
-		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil, sexo, cep, logradouro, bairro, localidade, uf, numero,datanascimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil, sexo, cep, logradouro, bairro, localidade, uf, numero, datanascimento, rendamensal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
 		
 		preparedSql.setString(1, objeto.getLogin());
@@ -43,6 +43,7 @@ public class DAOUsuarioRepository {
 		preparedSql.setString(12, objeto.getUf());
 		preparedSql.setString(13, objeto.getNumero());
 		preparedSql.setDate(14, objeto.getDataNascimento());
+		preparedSql.setDouble(15, objeto.getRendamensal());
 		
 		preparedSql.execute();
 		
@@ -64,7 +65,7 @@ public class DAOUsuarioRepository {
 			}
 		
 		}else {
-			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?, perfil=?, sexo=?, cep=?, logradouro=?, bairro=?, localidade=?, uf=?, numero=?, datanascimento=? where id = "+objeto.getId()+";";
+			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?, perfil=?, sexo=?, cep=?, logradouro=?, bairro=?, localidade=?, uf=?, numero=?, datanascimento=?, rendamensal=? where id = "+objeto.getId()+";";
 			
 			PreparedStatement prepareSql = connection.prepareStatement(sql);
 			
@@ -83,6 +84,7 @@ public class DAOUsuarioRepository {
 			prepareSql.setString(11, objeto.getUf());
 			prepareSql.setString(12, objeto.getNumero());
 			prepareSql.setDate(13, objeto.getDataNascimento());
+			prepareSql.setDouble(14, objeto.getRendamensal());
 			
 			prepareSql.executeUpdate();
 			
@@ -317,13 +319,14 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 			 modelLogin.setPerfil(resultado.getString("perfil"));
 			 modelLogin.setSexo(resultado.getString("sexo"));
 			 modelLogin.setFotouser(resultado.getString("fotouser"));
-			 
 			 modelLogin.setCep(resultado.getString("cep"));
 			 modelLogin.setLogradouro(resultado.getString("logradouro"));
 			 modelLogin.setBairro(resultado.getString("bairro"));
 			 modelLogin.setLocalidade(resultado.getString("localidade"));
 			 modelLogin.setUf(resultado.getString("uf"));
 			 modelLogin.setNumero(resultado.getString("numero"));
+			 modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
+			 modelLogin.setRendamensal(resultado.getDouble("rendamensal"));
 		 }
 		 
 		return modelLogin;
@@ -355,13 +358,14 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 			 modelLogin.setPerfil(resultado.getString("perfil"));
 			 modelLogin.setSexo(resultado.getString("sexo"));
 			 modelLogin.setFotouser(resultado.getString("fotouser"));
-			 
 			 modelLogin.setCep(resultado.getString("cep"));
 			 modelLogin.setLogradouro(resultado.getString("logradouro"));
 			 modelLogin.setBairro(resultado.getString("bairro"));
 			 modelLogin.setLocalidade(resultado.getString("localidade"));
 			 modelLogin.setUf(resultado.getString("uf"));
 			 modelLogin.setNumero(resultado.getString("numero"));
+			 modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
+			 modelLogin.setRendamensal(resultado.getDouble("rendamensal"));
 		 }
 		 
 		return modelLogin;
@@ -392,13 +396,14 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 			 modelLogin.setPerfil(resultado.getString("perfil"));
 			 modelLogin.setSexo(resultado.getString("sexo"));
 			 modelLogin.setFotouser(resultado.getString("fotouser"));
-			 
 			 modelLogin.setCep(resultado.getString("cep"));
 			 modelLogin.setLogradouro(resultado.getString("logradouro"));
 			 modelLogin.setBairro(resultado.getString("bairro"));
 			 modelLogin.setLocalidade(resultado.getString("localidade"));
 			 modelLogin.setUf(resultado.getString("uf"));
 			 modelLogin.setNumero(resultado.getString("numero"));
+			 modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
+			 modelLogin.setRendamensal(resultado.getDouble("rendamensal"));
 		 }
 		 
 		return modelLogin;
@@ -434,13 +439,14 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 					 modelLogin.setSexo(resultado.getString("sexo"));
 					 modelLogin.setFotouser(resultado.getString("fotouser"));
 					 modelLogin.setExtensafotouser(resultado.getString("extensafotouser"));
-					 
 					 modelLogin.setCep(resultado.getString("cep"));
 					 modelLogin.setLogradouro(resultado.getString("logradouro"));
 					 modelLogin.setBairro(resultado.getString("bairro"));
 					 modelLogin.setLocalidade(resultado.getString("localidade"));
 					 modelLogin.setUf(resultado.getString("uf"));
 					 modelLogin.setNumero(resultado.getString("numero"));
+					 modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
+					 modelLogin.setRendamensal(resultado.getDouble("rendamensal"));
 				 }
 				 
 				return modelLogin;
@@ -477,13 +483,14 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 				 modelLogin.setSexo(resultado.getString("sexo"));
 				 modelLogin.setFotouser(resultado.getString("fotouser"));
 				 modelLogin.setExtensafotouser(resultado.getString("extensafotouser"));
-				 
 				 modelLogin.setCep(resultado.getString("cep"));
 				 modelLogin.setLogradouro(resultado.getString("logradouro"));
 				 modelLogin.setBairro(resultado.getString("bairro"));
 				 modelLogin.setLocalidade(resultado.getString("localidade"));
 				 modelLogin.setUf(resultado.getString("uf"));
 				 modelLogin.setNumero(resultado.getString("numero"));
+				 modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
+				 modelLogin.setRendamensal(resultado.getDouble("rendamensal"));
 			 }
 			 
 			return modelLogin;

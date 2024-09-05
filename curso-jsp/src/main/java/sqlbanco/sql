@@ -89,6 +89,9 @@ constraint usuario_cad_fk foreign key(usuario_cad_id) references model_login (id
 Adicionar coluna data de nascimento
 alter table model_login add column datanascimento date;
 
+----------------------------------------------------------------------------------------------------------
+Adicionar coluna renda mensal
+alter table model_login add column rendamensal double precision;
 
 
   
