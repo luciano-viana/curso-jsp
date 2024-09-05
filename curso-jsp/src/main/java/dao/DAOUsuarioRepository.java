@@ -24,7 +24,7 @@ public class DAOUsuarioRepository {
 		
 		if(objeto.isNovo()) {//Grava um novo usuário
 		
-		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil, sexo, cep, logradouro, bairro, localidade, uf, numero) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil, sexo, cep, logradouro, bairro, localidade, uf, numero,datanascimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		PreparedStatement preparedSql = connection.prepareStatement(sql);
 		
 		preparedSql.setString(1, objeto.getLogin());
@@ -42,6 +42,7 @@ public class DAOUsuarioRepository {
 		preparedSql.setString(11, objeto.getLocalidade());
 		preparedSql.setString(12, objeto.getUf());
 		preparedSql.setString(13, objeto.getNumero());
+		preparedSql.setDate(14, objeto.getDataNascimento());
 		
 		preparedSql.execute();
 		
@@ -63,7 +64,7 @@ public class DAOUsuarioRepository {
 			}
 		
 		}else {
-			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?, perfil=?, sexo=?, cep=?, logradouro=?, bairro=?, localidade=?, uf=?, numero=?  WHERE id = "+objeto.getId()+";";
+			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?, perfil=?, sexo=?, cep=?, logradouro=?, bairro=?, localidade=?, uf=?, numero=?, datanascimento=? where id = "+objeto.getId()+";";
 			
 			PreparedStatement prepareSql = connection.prepareStatement(sql);
 			
@@ -81,6 +82,7 @@ public class DAOUsuarioRepository {
 			prepareSql.setString(10, objeto.getLocalidade());
 			prepareSql.setString(11, objeto.getUf());
 			prepareSql.setString(12, objeto.getNumero());
+			prepareSql.setDate(13, objeto.getDataNascimento());
 			
 			prepareSql.executeUpdate();
 			

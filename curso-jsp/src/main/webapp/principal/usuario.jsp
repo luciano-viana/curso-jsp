@@ -83,8 +83,8 @@
                                                                 <label class="float-label">Nome:</label>
                                                             </div>
                                                             
-                                                             <div class="form-group form-default">
-                                                                <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" required="required" value="${modolLogin.dataNascimento}">
+                                                             <div class="form-group form-default form-static-label">
+                                                                <input type="text" name="dataNascimento" id="dataNascimento" class="form-control" required="required" value="${modolLogin.dataNascimento}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Data de Nascimento:</label>
                                                             </div>

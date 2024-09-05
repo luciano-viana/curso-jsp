@@ -12,6 +12,8 @@ import model.ModelLogin;
 
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.tomcat.jakartaee.commons.compress.utils.IOUtils;
@@ -180,13 +182,13 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		String senha = request.getParameter("senha");
 		String perfil = request.getParameter("perfil");
 		String sexo = request.getParameter("sexo");
-		
 		String cep = request.getParameter("cep");
 		String logradouro = request.getParameter("logradouro");
 		String bairro = request.getParameter("bairro");
 		String localidade = request.getParameter("localidade");
 		String uf = request.getParameter("uf");
 		String numero = request.getParameter("numero");
+		String dataNascimento = request.getParameter("dataNascimento");
 		
 		//Iniciar um objeto
 		ModelLogin modelLogin = new ModelLogin();
@@ -198,13 +200,13 @@ public class ServletUsuarioController extends ServletGenericUtil{
 		modelLogin.setSenha(senha);
 		modelLogin.setPerfil(perfil);
 		modelLogin.setSexo(sexo);
-		
 		modelLogin.setCep(cep);
 		modelLogin.setLogradouro(logradouro);
 		modelLogin.setBairro(bairro);
 		modelLogin.setLocalidade(localidade);
 		modelLogin.setUf(uf);
 		modelLogin.setNumero(numero);
+		modelLogin.setDataNascimento(new Date(new SimpleDateFormat("dd/mm/yyyy").parse(dataNascimento).getTime()));
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			Part part = request.getPart("fileFoto");//Pega foto da tela
