@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+
+<!-- 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %> <!-- Declaração do JSP para trabalhar com o mesmo no projeto -->
 
 <!DOCTYPE html>
@@ -34,53 +37,69 @@
 							<!-- Main-body start -->
 							<div class="main-body">
 								<div class="page-wrapper">
+									
+<!------------------------------------------------------------------------------- FORMULARIO + TABLEA-------------------------------------------------------------------------------------------->								
+									
 									<!-- Page-body start -->
 									<div class="page-body">
 
-										<!-- Base para motar o formulário com Bootstrap  -->
+
 										<div class="row">
 											<div class="col-sm-12">
 												<!-- Basic Form Inputs card start -->
 												<div class="card">
 
-													<div class="card-block"></div>
-													<h4 class="sub-title">Cadastro de Telefone</h4>
-													
-													<form class="form-material" action="<%= request.getContextPath()%>/SertvletTelefone" method="post" id="formFone">
-													
-														 <div class="form-group form-default form-static-label">
-	                                                                <input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modelLogin.id}">
-	                                                                <span class="form-bar"></span>
-	                                                                <label class="float-label">ID User:</label>
-	                                                     </div>
-	                                                     
-	                                                     <!-- Campo de Texto -->
-	                                                     <div class="form-group form-default form-static-label">
-	                                                         <input readonly="readonly" type="text" name="nome" id="nome" class="form-control" required="required" value="${modelLogin.nome}">
-	                                                          <span class="form-bar"></span>
-	                                                          <label class="float-label">Nome:</label>
-	                                                     </div>
-	                                                            
-	                                                     <div class="form-group form-default form-static-label">
-	                                                         <input type="text" name="numero" id="numero" class="form-control" required="required">
-	                                                         <span class="form-bar"></span>
-	                                                         <label class="float-label">Numero:</label>
-	                                                     </div>
-	                                                            
-	                                                     <button class="btn btn-success waves-effect waves-light">Salvar</button>
-	                                                     
-													</form>
+
 													
 													
+													<div class="card-block">
+														<h4 class="sub-title">Cadastro de Telefone</h4>
+															
+															 <form class="form-material"  action="<%= request.getContextPath() %>/SertvletTelefone" method="post" id="formFone" >
+
+
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="id" id="id"
+																	class="form-control" readonly="readonly"
+																	value="${modelLogin.id}"> 
+																	<span class="form-bar"></span>
+																	 <label class="float-label">ID User:</label>
+															</div>
+															
+															
+															<div class="form-group form-default form-static-label">
+                                                                <input readonly="readonly" type="text" name="nome" id="nome" class="form-control" required="required" value="${modelLogin.nome}">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Nome:</label>
+                                                            </div>
+                                                            
+                                                            
+                                                            <div class="form-group form-default form-static-label">
+                                                                <input  type="text" name="numero" id="numero" class="form-control" required="required" >
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Numero:</label>
+                                                            </div>
+                                                            
+                                                            <button  class="btn btn-success waves-effect waves-light">Salvar</button>
+
+
+														</form>
+													</div>
+
+
 												</div>
+												
+												
 											</div>
 										</div>
-										<span id="msg">${msg}</span> <!-- span utilizado para mostrar mensagem -->
+										<span class="text-primary"id="msg1">${msg1}</span> <!-- span utilizado para mostrar mensagem -->
+										<span class="text-danger" id="msg2">${msg2}</span> <!-- span utilizado para mostrar mensagem -->
+										<span class="text-danger" id="msg3">${msg3}</span> <!-- span utilizado para mostrar mensagem -->
 										<!---------------------------------------------------------------------------------------------->
 										
 										
 											<!-- tabela -->
-											<div style="height:300px; overflow: scroll; ">
+											 <div style="height:300px; overflow: scroll; ">
 													<table class="table" id="tabelaresultadosview">
 											  	    <thead>
 											   	    <tr>
@@ -100,9 +119,11 @@
 											        </tbody>
 											        </table>
 											   </div>
+											   
 
 									</div>
 									<!-- Page-body end -->
+<!-------------------------------------------------------------------------------FIM FORMULARIO + TABLEA-------------------------------------------------------------------------------------------->
 								</div>
 								<div id="styleSelector"></div>
 							</div>
@@ -125,4 +146,4 @@ $("#numero").keypress(function(event){
 </body>
 
 </html>
-
+	
