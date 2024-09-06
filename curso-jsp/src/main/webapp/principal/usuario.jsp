@@ -326,7 +326,21 @@
 	
      <script type="text/javascript">
      $("#rendamensal").maskMoney({showSymbol:true, symbol:"R$ ", decimal:",", thousands:"."});
-    
+     
+     //constant de formatação / formatação da renda
+     const formatter = new Intl.NumberFormat('pt-BR', {
+      currency : 'BRL', 
+      minimumFractionDigits : 2
+     });
+     
+     $("#rendamensal").val(formatter.format($("#rendamensal").val()));
+     $("#rendamensal").focus();
+     
+     //Formatação da data
+     var dataNascimento = $("#dataNascimento").val();
+     var dateFormat = new Date(dataNascimento);
+     $("#dataNascimento").val(dateFormat.toLocaleDateString('pt-BR', {timeZone: 'UTC'}));
+     $("#nome").focus();
 	
 	//Código para utilizar calendário do jQuery
 	$( function() {
