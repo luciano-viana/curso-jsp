@@ -36,7 +36,7 @@
                                     <div class="page-body">
                                         <div class="row">
                                             
-                                            <h1>Conteúdo das páginas base do sistema</h1>
+                                            <h1>Relatório Usuário</h1>
                                             
                                         </div>
                                     </div>
