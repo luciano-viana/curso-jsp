@@ -153,7 +153,12 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				String dataInicial = request.getParameter("dataInicial");
 				String dataFinal = request.getParameter("dataFinal");
 				
-				System.out.println("sdsdsd");
+				if(dataInicial == null || dataInicial.isEmpty() && dataFinal == null || dataFinal.isEmpty()) {
+					
+					request.setAttribute("listaUser", daoUsuarioRepository.consultaUsuarioListRel(super.getUserLogado(request)));
+					
+				}
+				
 				
 				request.setAttribute("dataInicial", dataInicial);//manter os dados na tela
 				request.setAttribute("dataFinal", dataFinal);//manter os dados na tela
