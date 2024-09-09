@@ -9,6 +9,7 @@ import java.util.List;
 
 import connection.SingleConnectionBanco;
 import model.ModelLogin;
+import model.ModelTelefone;
 
 public class DAOUsuarioRepository {
 	
@@ -111,7 +112,7 @@ public class DAOUsuarioRepository {
 	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
-	//Método para buscar usuário por taltal de página	
+	//Método para buscar usuário por total de página	
 public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws Exception{
 		
 		String sql = "select count(1) as total from model_login where upper(nome) like upper(?) and useradmin is false and usuario_id = ? ";
@@ -284,13 +285,15 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 				modelLogin.setPerfil(resultado.getString("perfil"));
 				modelLogin.setSexo(resultado.getString("sexo"));
 				
+				modelLogin.setTelefones(this.listFone(modelLogin.getId()));
+				
 				retorno.add(modelLogin);
 			}
 			
 			
 			return retorno;
 		}
-	
+		
 //---------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	//Método para buscar usuário
@@ -550,5 +553,33 @@ public int consultaUsuarioListTotalPaginacao(String nome,Long userLogado) throws
 		
 		connection.commit();
 	}
+	
+//---------------------------------------------------------------------------------------------------------------------------------------------------------	
+	//Método carregar lista de telefones dos usuários
+		public List<ModelTelefone> listFone(Long idUserPai) throws Exception{
+			
+			List<ModelTelefone> retorno = new ArrayList<ModelTelefone>();
+			
+			String sql = "select * from telefone where usuario_pai_id = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			
+			preparedStatement.setLong(1, idUserPai);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				ModelTelefone modelTelefone = new ModelTelefone();
+				
+				modelTelefone.setId(rs.getLong("id"));
+				modelTelefone.setNumero(rs.getString("numero"));
+				modelTelefone.setUsuario_cad_id(this.consultaUsuarioID(rs.getLong("Usuario_cad_id")));
+				modelTelefone.setUsuario_pai_id(this.consultaUsuarioID(rs.getLong("Usuario_pai_id")));
+				
+				retorno.add(modelTelefone);
+			}
+			
+			return retorno;
+		}
 		
 }
