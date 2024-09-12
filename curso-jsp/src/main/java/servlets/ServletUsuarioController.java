@@ -204,7 +204,6 @@ public class ServletUsuarioController extends ServletGenericUtil{
 				request.setAttribute("totalPagina",daoUsuarioRepository.totalPagina(this.getUserLogado(request)) );
 				
 				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
-				
 			}
 				
 		}catch (Exception e) {
