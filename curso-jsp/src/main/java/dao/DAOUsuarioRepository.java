@@ -15,12 +15,17 @@ import model.ModelTelefone;
 
 public class DAOUsuarioRepository {
 	
+	//Verificando problema na execução do apache-tomcat-10.0.27
+	
+	
+	
 	private Connection connection;
 	
 	//construtor
 	public DAOUsuarioRepository() {
 		connection = SingleConnectionBanco.getConnection();
 	}
+	
 	
 	//Método grava e retorna
 	public ModelLogin gravarUsuario(ModelLogin objeto, Long userLogado) throws Exception {
