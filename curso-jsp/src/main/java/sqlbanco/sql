@@ -93,5 +93,20 @@ alter table model_login add column datanascimento date;
 Adicionar coluna renda mensal
 alter table model_login add column rendamensal double precision;
 
+----------------------------------------------------------------------------------------------------------
+Criar sequência versionador banco de dados
+CREATE SEQUENCE public.versionadorbanco_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
 
+Criar tabela versionamento banco de dados
+CREATE TABLE public.versionadorbanco
+(
+  id integer NOT NULL DEFAULT nextval('versionadorbanco_seq'::regclass),
+  arquivo_sql character varying(50) NOT NULL,
+  constraint id_pk primary key (id)
+)
   
