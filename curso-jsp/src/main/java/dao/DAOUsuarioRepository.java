@@ -18,6 +18,7 @@ public class DAOUsuarioRepository {
 	//Status do Projeto
 	//Verificando problema na execução do apache-tomcat-10.0.27
 	//Configurado Apache Maven 3.9.9 no Windows
+	//Gerado o WAR de implantação no servidor
 	
 	
 	
