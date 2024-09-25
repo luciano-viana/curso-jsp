@@ -20,6 +20,7 @@ public class DAOUsuarioRepository {
 	//Configurado Apache Maven 3.9.9 no Windows
 	//Gerado o WAR de implantação no servidor
 	//Feito correção nas variáveis de ambiente para execução do apache-tomcat-10.0.27 direto pelo Windows 
+	//Acessando e explorando o cPanel do Integrator
 	
 	
 	
