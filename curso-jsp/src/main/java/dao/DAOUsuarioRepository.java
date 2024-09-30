@@ -23,6 +23,7 @@ public class DAOUsuarioRepository {
 	//Acessando e explorando o cPanel do Integrator
 	//Integrator - Instalando Java JDK e Servidor Tomcat
 	//Integrator - Criado o banco de dados
+	//Integrator - Restaurado banco na hospedagem
 	
 	
 	
