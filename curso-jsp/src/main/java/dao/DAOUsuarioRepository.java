@@ -21,6 +21,7 @@ public class DAOUsuarioRepository {
 	//Gerado o WAR de implantação no servidor
 	//Feito correção nas variáveis de ambiente para execução do apache-tomcat-10.0.27 direto pelo Windows 
 	//Acessando e explorando o cPanel do Integrator
+	//Integrator - Instalando Java JDK e Servidor Tomcat
 	
 	
 	
