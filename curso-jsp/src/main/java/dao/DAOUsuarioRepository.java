@@ -24,7 +24,10 @@ public class DAOUsuarioRepository {
 	//Integrator - Instalando Java JDK e Servidor Tomcat
 	//Integrator - Criado o banco de dados
 	//Integrator - Restaurado banco na hospedagem
-	
+	//Integrator - Instalando o Maven
+	//Integrator - Aumentando memória Tomcat
+	//Integrator - Deploy War Projeto MVC e JSP
+	//Integrator - Cancelamento ou Upgrade do Plano Cloud
 	
 	
 	private Connection connection;
