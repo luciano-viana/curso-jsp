@@ -28,6 +28,7 @@ public class DAOUsuarioRepository {
 	//Integrator - Aumentando memória Tomcat
 	//Integrator - Deploy War Projeto MVC e JSP
 	//Integrator - Cancelamento ou Upgrade do Plano Cloud
+	//Verificando commit e upload da pasta completa do projeto
 	
 	
 	private Connection connection;
