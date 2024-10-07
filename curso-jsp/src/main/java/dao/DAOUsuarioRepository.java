@@ -30,6 +30,7 @@ public class DAOUsuarioRepository {
 	//Integrator - Cancelamento ou Upgrade do Plano Cloud
 	//Verificando commit e upload da pasta completa do projeto
 	//Heroku - Hospedagem FREE - Instalando o Heroku CLI e o GIT Hub
+	//Heroku - Criando e conectando o banco de dados PostgreSQL no Heroku
 	
 	
 	private Connection connection;
