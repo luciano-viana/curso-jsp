@@ -29,6 +29,7 @@ public class DAOUsuarioRepository {
 	//Integrator - Deploy War Projeto MVC e JSP
 	//Integrator - Cancelamento ou Upgrade do Plano Cloud
 	//Verificando commit e upload da pasta completa do projeto
+	//Heroku - Hospedagem FREE - Instalando o Heroku CLI e o GIT Hub
 	
 	
 	private Connection connection;
