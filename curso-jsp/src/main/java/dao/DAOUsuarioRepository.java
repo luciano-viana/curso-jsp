@@ -32,6 +32,7 @@ public class DAOUsuarioRepository {
 	//Heroku - Hospedagem FREE - Instalando o Heroku CLI e o GIT Hub
 	//Heroku - Criando e conectando o banco de dados PostgreSQL no Heroku
 	//Hospedagem do sistema Java na Web
+	//Hospedagem do sistema Java na Web no Mochahost
 	
 	
 	private Connection connection;
