@@ -33,7 +33,7 @@ public class DAOUsuarioRepository {
 	//Heroku - Criando e conectando o banco de dados PostgreSQL no Heroku
 	//Hospedagem do sistema Java na Web
 	//Hospedagem do sistema Java na Web no Mochahost
-	
+	//Montando página de portifolio dos projetos Java
 	
 	private Connection connection;
 	
