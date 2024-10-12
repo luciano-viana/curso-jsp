@@ -34,6 +34,7 @@ public class DAOUsuarioRepository {
 	//Hospedagem do sistema Java na Web
 	//Hospedagem do sistema Java na Web no Mochahost
 	//Montando página de portifolio dos projetos Java
+	//Finalizado módulo Hospedagem de aplicações Java
 	
 	private Connection connection;
 	
