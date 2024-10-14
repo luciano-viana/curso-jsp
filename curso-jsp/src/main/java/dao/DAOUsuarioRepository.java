@@ -35,6 +35,7 @@ public class DAOUsuarioRepository {
 	//Hospedagem do sistema Java na Web no Mochahost
 	//Montando página de portifolio dos projetos Java
 	//Finalizado módulo Hospedagem de aplicações Java
+	//1º - JSF 2.2 introdução e funcionamento
 	
 	private Connection connection;
 	
