@@ -37,6 +37,8 @@ public class DAOUsuarioRepository {
 	//Finalizado módulo Hospedagem de aplicações Java
 	//1º - JSF 2.2 introdução e funcionamento
 	//Resolvendo problema no projeto JSF
+	//Dia dedicado aos estudos dos clicos do JSF
+	//RETORNANDO AOS ESTUDOS
 	
 	private Connection connection;
 	
